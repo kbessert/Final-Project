@@ -32,13 +32,16 @@ $(function() {
     var elecDanMusicId="PLcHnJ21xVEoH7s6XHyAzkeKBN3-RF0Vq7";
     var rapMusicId="PLcHnJ21xVEoEHilkcfnWTZzZCCGkEYwns";
     var classicalMusicId = 'PLcHnJ21xVEoGtkxKWo5-g45245aC4MVFM';
-    $.get('https://www.eventbriteapi.com/v3/events/search/?token='+token+'&organizer.id=3687872659&expand=venue', function(res) {
-      if(res.events.length) {
+    $.get('http://api.songkick.com/api/3.0/metro_areas/18073/calendar.json?apikey=CVym1urfpjSkA2ph', function(res) {
+      //console.log(res.resultsPage.results.event);
+      if(res.resultsPage.results.event.length) {
         var s = "<ul class='eventList'>";
-        for(var i=0;i<res.events.length;i++) {
-          var event = res.events[i];
+        for(var i=0;i<res.resultsPage.results.event.length;i++) {
+          var event = res.resultsPage.results.event[i];
+          //console.log(event.displayName);
           //console.dir(event);
-          s += "<li><a href='" + event.url + "'>" + event.name.text + "</a> - " + event.description.text + "</li>";
+          console.log(event.performance);
+          s += "<li><a href='" + event.uri + "'>" + event.displayName + "</a>" + "</li>";
         }
         s += "</ul>";
         $events.html(s);
