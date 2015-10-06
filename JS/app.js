@@ -1,3 +1,4 @@
+function tplawesome(e,t){res=e;for(var n=0;n<t.length;n++){res=res.replace(/\{\{(.*?)\}\}/g,function(e,r){return t[n][r]})}return res}
 var app = angular.module("detroitMusicApp", ['ngRoute']);
 
 app.config(function($routeProvider){
@@ -15,7 +16,8 @@ app.config(function($routeProvider){
 	$routeProvider.otherwise('/partials/404.html');
 });
 
-function tplawesome(e,t){res=e;for(var n=0;n<t.length;n++){res=res.replace(/\{\{(.*?)\}\}/g,function(e,r){return t[n][r]})}return res}
+app.controller('mainCtrl', ['$scope', function($scope) {
+ 
 
 $(function() {
     var token = 'DIUFAQ7JQZVPW5NIIWJ5';
@@ -50,7 +52,7 @@ $(function() {
             var results = res;
             $("#results").html("");
             $.each(results.items, function(index, item) {
-              $.get("tpl/item.html", function(data) {
+              $.get("partials/videotemplate.html", function(data) {
                   $("#results").append(tplawesome(data, [{"title":item.snippet.title, "videoid":item.snippet.resourceId.videoId}]));
               });
             });
@@ -103,3 +105,5 @@ function init() {
         // yt api is ready
     });
 }
+;
+}]);
