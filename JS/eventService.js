@@ -1,0 +1,1 @@
+app.factory('eventService', [function() {
