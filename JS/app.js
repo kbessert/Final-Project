@@ -38,11 +38,13 @@ $(function() {
         var s = "<ul class='eventList'>";
         for(var i=0;i<res.resultsPage.results.event.length;i++) {
           var event = res.resultsPage.results.event[i];
+           var eventTime = moment(event.start.datetime).format('M/D/YYYY h:mm A');
           //console.log(event.displayName);
           //console.dir(event);
-          console.log(event.performance[0], "performance");
+         // console.log(event.performance[0], "performance");
           event.performance.forEach(function (perf){
-            s += "<li><a href='" + event.uri + "'>" + event.displayName + "</a>" +"<img src='http://images.sk-static.com/images/media/profile_images/artists/"+perf.artist.id+"/huge_avatar'>"+ "</li>";
+            console.log(event.start);
+            s += "<li><a href='" + event.uri + "'>" + event.displayName + "</a>" +"<img src='http://images.sk-static.com/images/media/profile_images/artists/"+perf.artist.id+"/huge_avatar'>" + "<b>Date/Time: " + eventTime + "</b></p>"+"</li>";
           });          
         }
         s += "</ul>";
