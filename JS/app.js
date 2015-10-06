@@ -40,8 +40,10 @@ $(function() {
           var event = res.resultsPage.results.event[i];
           //console.log(event.displayName);
           //console.dir(event);
-          console.log(event.performance);
-          s += "<li><a href='" + event.uri + "'>" + event.displayName + "</a>" + "</li>";
+          console.log(event.performance[0], "performance");
+          event.performance.forEach(function (perf){
+            s += "<li><a href='" + event.uri + "'>" + event.displayName + "</a>" +"<img src='http://images.sk-static.com/images/media/profile_images/artists/"+perf.artist.id+"/huge_avatar'>"+ "</li>";
+          });          
         }
         s += "</ul>";
         $events.html(s);
