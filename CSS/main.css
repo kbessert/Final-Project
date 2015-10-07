@@ -3,8 +3,15 @@
 	font-family: Offside,'Ubuntu Condensed', arial;
 	background-color: black;
 }
+#landing {
+  width: 700px;
+  height: 600px;
+  margin: 0 auto;
+  margin-top: 50px;
+  margin-bottom: 200px;
+}
 h1 {
-	color: red;
+	color: white;
 	font-size: 50px;
 	display: block;
 }
