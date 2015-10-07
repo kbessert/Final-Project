@@ -64,8 +64,10 @@ $(function() {
                   $("#results").append(tplawesome(data, [{"title":playlistId[0], "videoid":playlistId[1]}])); 
       });
     } 
+});
+}]);
     $("form").on("submit", function(e) {
-      runCategoryApi(classicalMusicId);
+      //runCategoryApi(classicalMusicId);
        e.preventDefault();
        // prepare the request
        var request = gapi.client.youtube.search.list({
@@ -91,9 +93,8 @@ $(function() {
             resetVideoHeight();
          });
        });
-        
     $(window).on("resize", resetVideoHeight);
-});
+
 
 function resetVideoHeight() {
     $(".video").css("height", $("#results").width() * 9/16);
@@ -106,4 +107,3 @@ function init() {
     });
 }
 ;
-}]);
