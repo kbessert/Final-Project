@@ -47,11 +47,11 @@ $(function() {
             if(event.start.time!==null){
             s += "<li><a href='" + event.uri + "'>" + perf.displayName + " at " + event.venue.displayName + "</a>"
             +"<img src='http://images.sk-static.com/images/media/profile_images/artists/"+perf.artist.id+"/huge_avatar'>" 
-            + "<b>Date/Time: " + eventTime + "</b></p>"+"</li>";
+            + "Date/Time: " + eventTime + "</p>"+"</li>";
               }else{
             s += "<li><a href='" + event.uri + "'>" + perf.displayName + " at " + event.venue.displayName +"</a>"
             +"<img src='http://images.sk-static.com/images/media/profile_images/artists/"+perf.artist.id+"/huge_avatar'>"
-            + "<b>Date: " + event.start.date + "</b></p>"+"</li>"
+            + "Date: " + event.start.date + "</p>"+"</li>"
               }
           });          
         }

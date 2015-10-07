@@ -11,27 +11,53 @@
 <link rel="stylesheet" href="css/main.css">
 
 </head>
-<body ng-app="detroitMusicApp">
+<body ng-app="detroitMusicApp" id="container">
 
 
-<a href="#/main-view">HOME</a>
-<a href="#/event-view">VIEW UPCOMING EVENTS</a>
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+
+          </button>
+          <a class="navbar-brand" href="#">HitsVille</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#/main-view">Home<span class="sr-only">(current)</span></a></li>
+            <li><a href="#/event-view">Detroit Events</a></li>
+
+          </ul>
+
+
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+
 
 {{1+1}}
 
-<div ng-controller="mainCtrl">
-	 <header>
-            <h1 class="w100 text-center"><a href="index.html">YouTube music Search</a></h1>
-        </header>
-        <div class="row">
-            <div class="col-md-6 col-md-offset-3">
-                <form action="#">
-                    <p><input type="text" id="search" placeholder="Type something..." autocomplete="off" class="form-control" /></p>
-                    <p><input type="submit" value="Search" class="form-control btn btn-primary w100"></p>
-                </form>
- <div id="results"></div>
- <div id="events"></div>
-</div>
+
+
+
+    <div ng-controller="mainCtrl">
+    	 <header>
+                <h1 class="w100 text-center"><a href="index.html">YouTube music Search</a></h1>
+            </header>
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                    <form action="#">
+                        <p><input type="text" id="search" placeholder="Type something..." autocomplete="off" class="form-control" /></p>
+                        <p><input type="submit" value="Search" class="form-control btn btn-primary w100"></p>
+                    </form>
+     <div id="results"></div>
+     <div id="events"></div>
+    </div>
 
 <div ng-controller="eventCtrl">
 </div>
