@@ -1,20 +1,20 @@
 function tplawesome(e,t){res=e;for(var n=0;n<t.length;n++){res=res.replace(/\{\{(.*?)\}\}/g,function(e,r){return t[n][r]})}return res}
 var app = angular.module("detroitMusicApp", ['ngRoute']);
 
-app.config(function($routeProvider){
-	$routeProvider.when('/main-view',
-		{
-			templateUrl: 'partials/main-view.html',
-			controller: 'mainCtrl', 
+// app.config(function($routeProvider){
+// 	$routeProvider.when('/main-view',
+// 		{
+// 			templateUrl: 'partials/main-view.html',
+// 			controller: 'mainCtrl', 
 			
-		});
-	$routeProvider.when('/event-view',
-		{
-			templateUrl: 'partials/event-view.html',
-			controller: 'eventCtrl'
-		});
-	$routeProvider.otherwise('/partials/404.html');
-});
+// 		});
+// 	$routeProvider.when('/event-view',
+// 		{
+// 			templateUrl: 'partials/event-view.html',
+// 			controller: 'eventCtrl'
+// 		});
+// 	$routeProvider.otherwise('/partials/404.html');
+// });
 
 app.controller('mainCtrl', ['$scope', function($scope) {
  
@@ -36,23 +36,37 @@ $(function() {
       //console.log(res.resultsPage.results.event);
       if(res.resultsPage.results.event.length) {
         var s = "<ul class='eventList'>";
-        for(var i=0;i<res.resultsPage.results.event.length;i++) {
-          var event = res.resultsPage.results.event[i];
-           var eventTime = moment(event.start.datetime).format('M/D/YYYY h:mm A');
-          //console.log(event.displayName);
-          //console.dir(event);
-         // console.log(event.performance[0], "performance");
+        $("#results").html("");
+            $.each(res.resultsPage.results.event, function(index, item) {
+              var event = res.resultsPage.results.event[i];
+              var eventTime = moment(event.start.datetime).format('M/D/YYYY h:mm A');
           event.performance.forEach(function (perf){
             console.log(event.start);
             if(event.start.time!==null){
-            s += "<li><a href='" + event.uri + "'>" + perf.displayName + " at " + event.venue.displayName + "<br></a>" + "Date/Time: " + eventTime
-            +"<img src='http://images.sk-static.com/images/media/profile_images/artists/"+perf.artist.id+"/huge_avatar'>" 
-           + "</p>"+"</li>";
+             $.get("partials/event-view.html", function(data) {
+                  $("#results").append(tplawesome(data, [{
+                    "link":event.uri, 
+                    "eventTitle":perf.displayName, 
+                    "venue":event.venue.displayName, 
+                    "time":eventTime, 
+                    "picture":"http://images.sk-static.com/images/media/profile_images/artists/"+perf.artist.id+"/huge_avatar"}]));
+              });
+
               }else{
-            s += "<li><a href='" + event.uri + "'>" + perf.displayName + " at " + event.venue.displayName  + "<br></a>" + "Date: " + event.start.date +
-            +"<img src='http://images.sk-static.com/images/media/profile_images/artists/"+perf.artist.id+"/huge_avatar'>"
-            + "</p>"+"</li>"
+             $.get("partials/event-view.html", function(data) {
+                  $("#results").append(tplawesome(data, [{
+                    "link":event.uri, 
+                    "eventTitle":perf.displayName, 
+                    "venue":event.venue.displayName, 
+                    "time":event.start.date, 
+                    "picture":"http://images.sk-static.com/images/media/profile_images/artists/"+perf.artist.id+"/huge_avatar"}]));
+              });
               }
+
+           
+            });
+
+
           });          
         }
         s += "</ul>";
