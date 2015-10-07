@@ -1,22 +1,9 @@
 function tplawesome(e,t){res=e;for(var n=0;n<t.length;n++){res=res.replace(/\{\{(.*?)\}\}/g,function(e,r){return t[n][r]})}return res}
-var app = angular.module("detroitMusicApp", ['ngRoute']);
 
-app.config(function($routeProvider){
-	$routeProvider.when('/main-view',
-		{
-			templateUrl: 'partials/main-view.html',
-			controller: 'mainCtrl', 
-			
-		});
-	$routeProvider.when('/event-view',
-		{
-			templateUrl: 'partials/event-view.html',
-			controller: 'eventCtrl'
-		});
-	$routeProvider.otherwise('/partials/404.html');
-});
 
-app.controller('mainCtrl', ['$scope', function($scope) {
+
+
+
  
 
 $(function() {
@@ -57,15 +44,17 @@ $(function() {
         $events.html("<p>Sorry, there are no upcoming events.</p>");
       }
     });
-    function runCategoryApi(playlistId){    
+    function runCategoryApi(playlistId){
+
             $("#results").html("");
               $.get("partials/videotemplate.html", function(data) {
+                $('div.item').remove();
                   $("#results").append(tplawesome(data, [{"title":playlistId[0], "videoid":playlistId[1]}])); 
       });
     } 
-    runCategoryApi(punkMusicId);
+   runCategoryApi(punkMusicId); 
+   runCategoryApi(punkMusicId); 
 });
-}]);
     $("form").on("submit", function(e) {
       //runCategoryApi(classicalMusicId);
        e.preventDefault();
