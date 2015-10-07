@@ -44,7 +44,15 @@ $(function() {
          // console.log(event.performance[0], "performance");
           event.performance.forEach(function (perf){
             console.log(event.start);
-            s += "<li><a href='" + event.uri + "'>" + event.displayName + "</a>" +"<img src='http://images.sk-static.com/images/media/profile_images/artists/"+perf.artist.id+"/huge_avatar'>" + "<b>Date/Time: " + eventTime + "</b></p>"+"</li>";
+            if(event.start.time!==null){
+            s += "<li><a href='" + event.uri + "'>" + perf.displayName + " at " + event.venue.displayName + "</a>"
+            +"<img src='http://images.sk-static.com/images/media/profile_images/artists/"+perf.artist.id+"/huge_avatar'>" 
+            + "<b>Date/Time: " + eventTime + "</b></p>"+"</li>";
+              }else{
+            s += "<li><a href='" + event.uri + "'>" + perf.displayName + " at " + event.venue.displayName +"</a>"
+            +"<img src='http://images.sk-static.com/images/media/profile_images/artists/"+perf.artist.id+"/huge_avatar'>"
+            + "<b>Date: " + event.start.date + "</b></p>"+"</li>"
+              }
           });          
         }
         s += "</ul>";
