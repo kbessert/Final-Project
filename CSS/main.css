@@ -52,3 +52,9 @@ h1 img {
 	display: inline;
 	width: 200px;
 }
+
+.video {
+	width: 640px;
+	height: 360px;
+	
+}

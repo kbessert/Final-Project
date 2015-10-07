@@ -63,6 +63,7 @@ $(function() {
                   $("#results").append(tplawesome(data, [{"title":playlistId[0], "videoid":playlistId[1]}])); 
       });
     } 
+    runCategoryApi(punkMusicId);
 });
 }]);
     $("form").on("submit", function(e) {
@@ -75,7 +76,7 @@ $(function() {
             //videoSyndicated:"true",
             videoCategoryId:10,
             q: encodeURIComponent($("#search").val()).replace(/%20/g, "+"),
-            maxResults: 3,
+            maxResults: 1,
             order: "viewCount"
        }); 
        // execute the request   
