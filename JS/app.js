@@ -38,7 +38,7 @@ $(function() {
         res.resultsPage.results.event.forEach(function (event) {
            var eventTime = moment(event.start.datetime).format('M/D/YYYY h:mm A');
           event.performance.forEach(function (perf){
-            console.log(event.start);
+            //console.log(event.start);
             if(event.start.time!==null){
             s += "<li><a href='" + event.uri + "'>" + perf.displayName + " at " + event.venue.displayName + "<br></a>" + "Date/Time: " + eventTime
             +"<img src='http://images.sk-static.com/images/media/profile_images/artists/"+perf.artist.id+"/huge_avatar'>" 
@@ -80,11 +80,11 @@ $(function() {
        }); 
        // execute the request   
          request.execute(function(response) {
-          console.log(response.result.items);
+          //console.log(response.result.items);
             var results = response.result;
             $("#results").html("");
             $.each(results.items, function(index, item) {
-              console.log(index, item);
+              //console.log(index, item);
               $.get("partials/videotemplate.html", function(data) {
                   $("#results").append(tplawesome(data, [{"title":item.snippet.title, "videoid":item.id.videoId}]));
               });
