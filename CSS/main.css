@@ -1,9 +1,20 @@
 #container {
+	width: 1440px;
+	font-family: 'DIN condensed', cursive;
 	background-color: black;
 }
 h1 {
 	color: red;
-	font-family: 'Italianno', cursive;
+	font-size: 60px;
+	display: block;
+}
+.navbar, form input {
+	font-size: 20px;
+}
+footer {
+	color: gray;
+	font-size: 20px;
+	margin-left: 30px;
 }
 img{
 	width: 110px;
@@ -13,9 +24,31 @@ img{
 #events {
 	color: white;
 	display: block;
-
 }
 .displayName {
 	color: white;
 	display: block;
+}
+.catHeader {
+	color: red;
+	font-family: 'DIN condensed', cursive;
+	font-size: 60px;
+	margin-top: 300px;
+	text-align: center;
+	letter-spacing: 3px;
+}
+#categories img {
+	border: 1px white solid;
+	margin-left: 100px;
+	margin-top: 50px;
+	display: inline;
+}
+#categories {
+	margin-left: 9%;
+	margin-right: 5%;
+	margin-bottom: 200px;
+}
+h1 img {
+	display: inline;
+	width: 200px;
 }
