@@ -106,4 +106,33 @@ function init() {
         // yt api is ready
     });
 }
+
 ;
+
+
+
+  $( "#categories" )
+    .mouseenter(function() {
+      $("h3").fadeTo(200, 1);
+      $("img").fadeTo(200, 0.3);
+    })
+    .mouseleave(function() {
+      $("h3").fadeTo(200, 1);
+      $("img").fadeTo(200, 1);
+    });
+
+  $( "#categories" )
+    .mouseleave(function() {
+      $("h3").fadeTo(200, 0);
+    });
+
+
+
+
+
+
+
+
+
+;
+
