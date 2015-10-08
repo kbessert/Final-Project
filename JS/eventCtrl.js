@@ -1,1 +1,0 @@
-app.controller('eventCtrl', ['eventService', function(eventService) {
