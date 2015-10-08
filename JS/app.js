@@ -9,16 +9,19 @@ function tplawesome(e,t){res=e;for(var n=0;n<t.length;n++){res=res.replace(/\{\{
 $(function() {
     var token = 'DIUFAQ7JQZVPW5NIIWJ5';
     var $events = $("#events");
-    var bluesMusicId=["Blues","PLtBIO70rIs?list=PLcHnJ21xVEoE8JXUX3uyQkJdHmnk1g7SZ"];
-    var countryMusicId=["Country","NHJKU_iVrtM?list=PLcHnJ21xVEoGUUA0dO2MoW1Rr-f92HFEY"];
-    var punkMusicId=["Punk/Alt","ZfvirxZMCr8?list=PLcHnJ21xVEoEnnqFQ6sDnjU9_QTmorXzj"];
-    var gospelMusicId=["Gospel","2Egepsyuzss?list=PLcHnJ21xVEoGuzZlm32m5n3JkjTH2Z1lX"];
-    var rockMusicId=["Rock","DIXlnn9V88s?list=PLcHnJ21xVEoF-XkPHSsP1p8Vkp_k1WeKn"];
-    var urbanMusicId=["Urban","P-W_KBNFhwU?list=PLcHnJ21xVEoGh9gcKQ8eStTAcpPqq8CMg"];
-    var jazzMusicId=["Jazz","hcHiala5Jq8?list=PLcHnJ21xVEoEpf0itQudCgBG_v4USuUtq"];
-    var elecDanMusicId=["Electronic","njRkmj9l4Z0?list=PLcHnJ21xVEoH7s6XHyAzkeKBN3-RF0Vq7"];
-    var rapMusicId=["Rap","nQhbzs-zo_0?list=PLcHnJ21xVEoEHilkcfnWTZzZCCGkEYwns"];
-    var classicalMusicId = ["Classical","oyB8iO-BPgQ?list=PLcHnJ21xVEoGtkxKWo5-g45245aC4MVFM"];
+    var randomNumber=Math.floor(Math.random()*10);
+     musicIdArray=[
+     bluesMusicId=["Blues","videoseries?list=PLcHnJ21xVEoE8JXUX3uyQkJdHmnk1g7SZ"],
+     countryMusicId=["Country","videoseries?list=PLcHnJ21xVEoGUUA0dO2MoW1Rr-f92HFEY"],
+     punkMusicId=["Punk/Alt","videoseries?list=PLcHnJ21xVEoEnnqFQ6sDnjU9_QTmorXzj"],
+     gospelMusicId=["Gospel","videoseries?list=PLcHnJ21xVEoGuzZlm32m5n3JkjTH2Z1lX"],
+     rockMusicId=["Rock","videoseries?list=PLcHnJ21xVEoF-XkPHSsP1p8Vkp_k1WeKn"],
+     urbanMusicId=["Urban","videoseries?list=PLcHnJ21xVEoGh9gcKQ8eStTAcpPqq8CMg"],
+     jazzMusicId=["Jazz","videoseries?list=PLcHnJ21xVEoEpf0itQudCgBG_v4USuUtq"],
+     elecDanMusicId=["Electronic","videoseries?list=PLcHnJ21xVEoH7s6XHyAzkeKBN3-RF0Vq7"],
+     rapMusicId=["Rap","videoseries?list=PLcHnJ21xVEoEHilkcfnWTZzZCCGkEYwns"],
+     classicalMusicId = ["Classical","videoseries?list=PLcHnJ21xVEoGtkxKWo5-g45245aC4MVFM"]
+    ];
     $.get('http://api.songkick.com/api/3.0/metro_areas/18073/calendar.json?apikey=CVym1urfpjSkA2ph', function(res) {
       if(res.resultsPage.results.event.length) {
         var s = "<ul class='eventList'>";
@@ -52,8 +55,7 @@ $(function() {
                   $("#results").append(tplawesome(data, [{"title":playlistId[0], "videoid":playlistId[1]}])); 
       });
     } 
-   runCategoryApi(punkMusicId); 
-   runCategoryApi(punkMusicId); 
+   runCategoryApi(musicIdArray[randomNumber]); 
 });
     $("form").on("submit", function(e) {
       //runCategoryApi(classicalMusicId);
@@ -94,12 +96,7 @@ function init() {
     gapi.client.load("youtube", "v3", function() {
         // yt api is ready
     });
-}
-
-;
-
-
-
+};
   $( "#categories" )
     .mouseenter(function() {
       $("#categories h3").fadeTo(200, 1);
@@ -114,13 +111,5 @@ function init() {
     .mouseleave(function() {
       $("#categories h3").fadeTo(200, 0);
     });
-
-
-
-
-
-
-
-
 ;
 
