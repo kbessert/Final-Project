@@ -233,5 +233,9 @@ display: inline;
   left: 135px;
   top: 1px;
 }
+button{
+	background-color: black;
+	border: 0px;
+}
 
 

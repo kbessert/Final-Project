@@ -21,8 +21,8 @@ $(function() {
            var eventTime = moment(event.start.datetime).format('M/D/YYYY h:mm A');
           event.performance.forEach(function (perf){
             //console.log(event.start);
-            if(event.start.time!==null){
-
+            if(event.start.datetime!==null){
+           // console.log(event.start);
             $("#events").html("");                      
               $.get("partials/event-view.html", function(data) {
                   $("#events").append(tplawesome(data, [{
@@ -34,6 +34,7 @@ $(function() {
                   }]));
             });
               }else{
+                //console.log(event.start.date);
                 $("#events").html("");                      
               $.get("partials/event-view.html", function(data) {
                   $("#events").append(tplawesome(data, [{
@@ -41,7 +42,7 @@ $(function() {
                     "displayName":perf.displayName, 
                     "venueName": event.venue.displayName,
                     "artistPicture": perf.artist.id,
-                    "date": event.start.time
+                    "date": event.start.date
                   }]));
               });
             }
@@ -49,6 +50,17 @@ $(function() {
         });        
     }
   });
+   $('ul.nav navbar-nav a').smoothScroll();
+
+      $('li a').click(function(event) {
+        console.log("smoothScroll");
+        event.preventDefault();
+        var link = this;
+        $.smoothScroll({
+          scrollTarget: link.hash
+        });
+      });
+
    runCategoryApi(musicIdArray[randomNumber]); 
 });
     $("form").on("submit", function(e) {
@@ -113,3 +125,5 @@ function runCategoryApi(playlistId){
       });
 } 
 
+
+  
