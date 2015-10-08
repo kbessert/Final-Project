@@ -1,13 +1,5 @@
 function tplawesome(e,t){res=e;for(var n=0;n<t.length;n++){res=res.replace(/\{\{(.*?)\}\}/g,function(e,r){return t[n][r]})}return res}
-
-
-
-
-
- 
-
 $(function() {
-    var token = 'DIUFAQ7JQZVPW5NIIWJ5';
     var $events = $("#events");
     var randomNumber=Math.floor(Math.random()*10);
      musicIdArray=[
@@ -40,12 +32,8 @@ $(function() {
                     "artistPicture": perf.artist.id,
                     "date": eventTime
                   }]));
-            
             });
-              
-            
               }else{
-
                 $("#events").html("");                      
               $.get("partials/event-view.html", function(data) {
                   $("#events").append(tplawesome(data, [{
@@ -54,16 +42,11 @@ $(function() {
                     "venueName": event.venue.displayName,
                     "artistPicture": perf.artist.id,
                     "date": event.start.time
-
                   }]));
-
-
-            
               });
             }
           });          
-        });
-        
+        });        
     }
   });
    runCategoryApi(musicIdArray[randomNumber]); 
@@ -89,19 +72,17 @@ $(function() {
             $.each(results.items, function(index, item) {
               //console.log(index, item);
               $.get("partials/videotemplate.html", function(data) {
-                  $("#results").append(tplawesome(data, [{"title":item.snippet.title, "videoid":item.id.videoId}]));
+                console.log(item.id.videoId);
+                  $("#results").append(tplawesome(data, [{"title":item.snippet.title, "videoid":item.id.videoId+"?autoplay=1"}]));
               });
             });
             resetVideoHeight();
          });
        });
     $(window).on("resize", resetVideoHeight);
-
-
 function resetVideoHeight() {
     $(".video").css("height", $("#results").width() * 9/16);
 }
-
 function init() {
     gapi.client.setApiKey("AIzaSyDc6CAlmMDlI4EH2YHeGnVVTW-RvU564QM");
     gapi.client.load("youtube", "v3", function() {
@@ -130,5 +111,5 @@ function runCategoryApi(playlistId){
                 $('div.item').remove();
                   $("#results").append(tplawesome(data, [{"title":playlistId[0], "videoid":playlistId[1]}])); 
       });
-    } 
+} 
 
