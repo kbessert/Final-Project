@@ -7,7 +7,6 @@ function tplawesome(e,t){res=e;for(var n=0;n<t.length;n++){res=res.replace(/\{\{
  
 
 $(function() {
-    var token = 'DIUFAQ7JQZVPW5NIIWJ5';
     var $events = $("#events");
     var randomNumber=Math.floor(Math.random()*10);
      musicIdArray=[
@@ -78,7 +77,8 @@ $(function() {
             $.each(results.items, function(index, item) {
               //console.log(index, item);
               $.get("partials/videotemplate.html", function(data) {
-                  $("#results").append(tplawesome(data, [{"title":item.snippet.title, "videoid":item.id.videoId}]));
+                console.log(item.id.videoId);
+                  $("#results").append(tplawesome(data, [{"title":item.snippet.title, "videoid":item.id.videoId+"?autoplay=1"}]));
               });
             });
             resetVideoHeight();
