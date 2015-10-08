@@ -1,11 +1,4 @@
 function tplawesome(e,t){res=e;for(var n=0;n<t.length;n++){res=res.replace(/\{\{(.*?)\}\}/g,function(e,r){return t[n][r]})}return res}
-
-
-
-
-
- 
-
 $(function() {
     var $events = $("#events");
     var randomNumber=Math.floor(Math.random()*10);
@@ -39,12 +32,8 @@ $(function() {
                     "artistPicture": perf.artist.id,
                     "date": eventTime
                   }]));
-            
             });
-              
-            
               }else{
-
                 $("#events").html("");                      
               $.get("partials/event-view.html", function(data) {
                   $("#events").append(tplawesome(data, [{
@@ -53,16 +42,11 @@ $(function() {
                     "venueName": event.venue.displayName,
                     "artistPicture": perf.artist.id,
                     "date": event.start.time
-
                   }]));
-
-
-            
               });
             }
           });          
-        });
-        
+        });        
     }
   });
    runCategoryApi(musicIdArray[randomNumber]); 
@@ -96,12 +80,9 @@ $(function() {
          });
        });
     $(window).on("resize", resetVideoHeight);
-
-
 function resetVideoHeight() {
     $(".video").css("height", $("#results").width() * 9/16);
 }
-
 function init() {
     gapi.client.setApiKey("AIzaSyDc6CAlmMDlI4EH2YHeGnVVTW-RvU564QM");
     gapi.client.load("youtube", "v3", function() {
@@ -130,5 +111,5 @@ function runCategoryApi(playlistId){
                 $('div.item').remove();
                   $("#results").append(tplawesome(data, [{"title":playlistId[0], "videoid":playlistId[1]}])); 
       });
-    } 
+} 
 
