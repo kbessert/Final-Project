@@ -125,5 +125,8 @@ function runCategoryApi(playlistId){
       });
 } 
 
+$().ready(function() {
+    $('#wrapper').tubular({videoId: 'cpYOYQ4k_GU'});
 
+});
   
