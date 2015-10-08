@@ -43,13 +43,13 @@ $(function() {
                     "venueName": event.venue.displayName,
                     "artistPicture": perf.artist.id,
                     "date": event.start.date
-                  }]));
-              });
-            }
-          });          
-        });        
-    }
-  });
+                 }]));
+             });
+           }
+         });          
+       });        
+     }
+   });
    $('ul.nav navbar-nav a').smoothScroll();
 
       $('li a').click(function(event) {
@@ -62,7 +62,7 @@ $(function() {
       });
 
    runCategoryApi(musicIdArray[randomNumber]); 
-});
+  });
     $("form").on("submit", function(e) {
       //runCategoryApi(classicalMusicId);
        e.preventDefault();
