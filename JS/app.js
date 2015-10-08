@@ -50,13 +50,18 @@ $(function() {
        });        
      }
    });
+
    $('ul.nav navbar-nav a').smoothScroll();
 
       $('li a').click(function(event) {
+        
+
         console.log("smoothScroll");
         event.preventDefault();
         var link = this;
+
         $.smoothScroll({
+          offset: -70,
           scrollTarget: link.hash
         });
       });
