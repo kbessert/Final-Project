@@ -236,6 +236,7 @@ display: inline;
 button{
 	background-color: black;
 	border: 0px;
+	outline: 0;
 }
 
 .navbar{
