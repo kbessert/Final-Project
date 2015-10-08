@@ -39,7 +39,7 @@
             <div class="row">
                 <div class="col-md-6 col-md-offset-3">
                     <form action="#">
-                        <p><input type="text" id="search" placeholder="Type something..." autocomplete="off" class="form-control" /></p>
+                        <p><input type="text" id="search" placeholder="Type something..." autocomplete="on" class="form-control" /></p>
                         <p><input  type="submit" value="Search" class="form-control btn btn-primary w100"></p>
                     </form>
      <div id="results">
@@ -55,8 +55,8 @@
     <h2 class="catHeader">categories</h2>
     <div id="categories">
         <div class="rap">
-          <a onclick="(rapMusicId).punkMusicId"><img src="images/rap2.jpg">
-          <h3> rap/hip-hop</h3></a>
+          <button onclick="runCategoryApi(rapMusicId)"><img src="images/rap2.jpg">
+          <h3> rap/hip-hop</h3></button>
         </div>
         <div class="rock">
           <img src="images/rock2.jpg">
@@ -95,6 +95,12 @@
           <h3>urban</h3>
         </div>
     </div>
+
+    <div id="events">
+
+    </div>
+
+
     <footer>
       <p>&copy; metro music | 2015</p>
     </footer>

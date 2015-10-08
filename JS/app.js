@@ -29,31 +29,42 @@ $(function() {
           event.performance.forEach(function (perf){
             //console.log(event.start);
             if(event.start.time!==null){
-            s += "<li><a href='" + event.uri + "'>" + perf.displayName + " at " + event.venue.displayName + "<br></a>" + "Date/Time: " + eventTime
-            +"<img src='http://images.sk-static.com/images/media/profile_images/artists/"+perf.artist.id+"/huge_avatar'>" 
-           + "</p>"+"</li>";
+
+            $("#events").html("");                      
+              $.get("partials/event-view.html", function(data) {
+                  $("#events").append(tplawesome(data, [{
+                    "link": event.uri, 
+                    "displayName":perf.displayName, 
+                    "venueName": event.venue.displayName,
+                    "artistPicture": perf.artist.id,
+                    "date": eventTime
+                  }]));
+            
+            });
+              
+            
               }else{
-            s += "<li><a href='" + event.uri + "'>" + perf.displayName + " at " + event.venue.displayName  + "<br></a>" + "Date: " + event.start.date +
-            +"<img src='http://images.sk-static.com/images/media/profile_images/artists/"+perf.artist.id+"/huge_avatar'>"
-            + "</p>"+"</li>"
-              }
+
+                $("#events").html("");                      
+              $.get("partials/event-view.html", function(data) {
+                  $("#events").append(tplawesome(data, [{
+                    "link": event.uri, 
+                    "displayName":perf.displayName, 
+                    "venueName": event.venue.displayName,
+                    "artistPicture": perf.artist.id,
+                    "date": event.start.time
+
+                  }]));
+
+
+            
+              });
+            }
           });          
         });
-        s += "</ul>";
-        $events.html(s);
-        //console.log(event);
-      } else {
-        $events.html("<p>Sorry, there are no upcoming events.</p>");
-      }
-    });
-    function runCategoryApi(playlistId){
-
-            $("#results").html("");
-              $.get("partials/videotemplate.html", function(data) {
-                $('div.item').remove();
-                  $("#results").append(tplawesome(data, [{"title":playlistId[0], "videoid":playlistId[1]}])); 
-      });
-    } 
+        
+    }
+  });
    runCategoryApi(musicIdArray[randomNumber]); 
 });
     $("form").on("submit", function(e) {
@@ -111,5 +122,13 @@ function init() {
     .mouseleave(function() {
       $("#categories h3").fadeTo(200, 0);
     });
-;
+function runCategoryApi(playlistId){
+      console.log(playlistId);
+
+            $("#results").html("");
+              $.get("partials/videotemplate.html", function(data) {
+                $('div.item').remove();
+                  $("#results").append(tplawesome(data, [{"title":playlistId[0], "videoid":playlistId[1]}])); 
+      });
+    } 
 
