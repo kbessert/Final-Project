@@ -61,7 +61,7 @@ $(function() {
         var link = this;
 
         $.smoothScroll({
-          offset: -70,
+          offset: -40,
           scrollTarget: link.hash
         });
       });

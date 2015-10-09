@@ -32,10 +32,10 @@ img {
 	height: 110px;
 	display: block;
 }
-#events {
+/*#events {
 	color: white;
 	display: block;
-}
+}*/
 .displayName {
 	color: white;
 	display: block;
@@ -108,7 +108,7 @@ button{
   margin-bottom: 100px;
   text-align: center;
 }
-.eventItem {
+/*.eventItem {
   margin-left: 35%;
   height: 230px;
 }
@@ -122,7 +122,7 @@ button{
 .eventTitle a {
   color: #FFF;
   font-size: 20px;
-}
+}*/
 
 /**************
 CATEGORIES TEXT
