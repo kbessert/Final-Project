@@ -21,6 +21,9 @@ h1 {
 .navbar, form input {
   font-size: 17px;
 }
+form {
+  margin-bottom: 200px;
+}
 footer {
   color: gray;
   font-size: 15px;
@@ -31,10 +34,6 @@ img {
   height: 110px;
   display: block;
 }
-/*#events {
-  color: white;
-  display: block;
-}*/
 .displayName {
   color: white;
   display: block;
@@ -93,7 +92,7 @@ button{
   color: #00FFFF;
   font-size: 50px;
   letter-spacing: 7px;
-  margin-top: 200px;
+/*  margin-top: 200px;*/
   margin-bottom: 100px;
   text-align: center;
 }
@@ -119,19 +118,6 @@ button{
 #results {
   color: #00FFFF;
   letter-spacing: 7px;
-}
-
-div.border {
-  width: 100%;
-  margin: 0 auto;
-    background-color: transparent;
-  z-index: 1;
-   
-  bottom: 1.4em;
-  height: 3em;
-    position: absolute;
-    
-    background-size:contain;
 }
 #landingFooter{
   width: 100%;
