@@ -1,7 +1,7 @@
 #container {
-	width: 1440px;
-	font-family: Offside,'Ubuntu Condensed', arial;
-	background-color: black;
+  width: 1440px;
+  font-family: Offside,'Ubuntu Condensed', arial;
+  background-color: black;
 }
 #landing {
   width: 700px;
@@ -14,59 +14,60 @@
   color: #00FFFF;
 }
 h1 {
-	color: white;
-	font-size: 50px;
-	display: block;
+  color: white;
+  font-size: 50px;
+  display: block;
 }
-
 .navbar, form input {
-	font-size: 17px;
+  font-size: 17px;
 }
 footer {
-	color: gray;
-	font-size: 15px;
-	margin-left: 30px;
+  color: gray;
+  font-size: 15px;
+  margin-left: 30px;
 }
 img {
-	width: 110px;
-	height: 110px;
-	display: block;
+  width: 110px;
+  height: 110px;
+  display: block;
 }
 /*#events {
-	color: white;
-	display: block;
+  color: white;
+  display: block;
 }*/
 .displayName {
-	color: white;
-	display: block;
+  color: white;
+  display: block;
 }
 .catHeader {
+
 	color: #00FFFF;
 	font-size: 50px;
 	margin-top: 2em;
 	left:50%;
 	letter-spacing: 7px;
+
 }
 #categories img {
-	border: 1px white solid;
-	margin-left: 100px;
-	margin-top: 50px;
-	display: inline;
+  border: 1px white solid;
+  margin-left: 100px;
+  margin-top: 50px;
+  display: inline;
 }
 #categories {
+
 	margin-bottom: 200px;
 	display: block;
+
 }
 h1 #youtube { 
-	display: inline;
-	width: 200px;
+  display: inline;
+  width: 200px;
 }
 .video {
-	width: 640px;
-	height: 360px;
+  width: 640px;
+  height: 360px;
 }
-
-
 
 .navbar{
   z-index: 2;
@@ -103,27 +104,28 @@ button{
   margin-bottom: 100px;
   text-align: center;
 }
-/*.eventItem {
-  margin-left: 35%;
-  height: 230px;
-}
-.eventImg {
-  margin-top: 10px;
-}
+
 .eventTitle {
   color: gray;
-  font-size: 15px;
+  font-size: 14px;
 }
 .eventTitle a {
   color: #FFF;
-  font-size: 20px;
-}*/
+  font-size: 17px;
+}
+.col-md-2{
+  height:200px;
+  margin-bottom: 60px;
+}
+.col-sm-6{
+  height:200px;
+}
+
+
 
 /**************
 CATEGORIES TEXT
 ****************/
-
-
 .rap {
   position: relative;
   display: inline;
@@ -276,36 +278,30 @@ display: inline;
 }
 
 
-div.border {
-	width: 100%;
-	margin: 0 auto;
-    background-color: transparent;
- 	z-index: 1;
-   
- 	bottom: 1.4em;
- 	height: 3em;
 
+
+div.border {
+  width: 100%;
+  margin: 0 auto;
+    background-color: transparent;
+  z-index: 1;
+   
+  bottom: 1.4em;
+  height: 3em;
     position: absolute;
     
     background-size:contain;
 }
 #landingFooter{
-	width: 100%;
+  width: 100%;
 }
 .defaultEventImg{
-	float: top;
-	z-index: -1;
-	position:relative;
-	top: -110px;
+  float: top;
+  z-index: -1;
+  position:relative;
+  top: -110px;
 }
 #pictureConstrain{
-	height:100px;
+  height:100px;
 }
-.col-md-2{
-	height:200px;
 
-}
-.col-sm-6{
-	height:200px;
-
-}
