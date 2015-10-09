@@ -99,6 +99,7 @@ button{
 }
 #categories {
   margin-left: 5%;
+  margin-bottom: 200px;
 }
 .eventTitle {
   color: gray;
@@ -116,7 +117,6 @@ button{
   height:200px;
 }
 #results {
-  margin-top: 200px;
   color: #00FFFF;
   letter-spacing: 7px;
 }
@@ -149,7 +149,6 @@ a:hover {
   color: #00FFFF;
   text-decoration: none;
 }
-
 
 
 
