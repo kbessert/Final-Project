@@ -60,7 +60,6 @@ h1 #youtube {
   width: 640px;
   height: 360px;
 }
-
 .navbar{
   z-index: 2;
   position:fixed;
@@ -92,7 +91,6 @@ button{
   color: #00FFFF;
   font-size: 50px;
   letter-spacing: 7px;
-/*  margin-top: 200px;*/
   margin-bottom: 100px;
   text-align: center;
 }
@@ -293,6 +291,35 @@ display: inline;
   font-size: 15px;
   top: -80px;
 }
+
+
+
+
+
+
+
+/*************
+MEDIA QUIERIES
+**************/
+@media (min-width: 500px) {
+  .video {
+    width: 30%;
+  }
+  form {
+    width: 20%;
+  }
+  h1 #youtube { 
+  width: 40px;
+  }
+}
+
+
+
+
+
+
+
+
 
 
 
