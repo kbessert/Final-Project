@@ -10,13 +10,16 @@
   margin-top: 50px;
   margin-bottom: 200px;
 }
+#metro {
+  color: #00FFFF;
+}
 h1 {
 	color: white;
 	font-size: 50px;
 	display: block;
 }
 .navbar, form input {
-	font-size: 18px;
+	font-size: 17px;
 }
 footer {
 	color: gray;
@@ -37,7 +40,7 @@ img{
 	display: block;
 }
 .catHeader {
-	color: red;
+	color: #00FFFF;
 	font-size: 50px;
 	margin-top: 730px;
 	text-align: center;
@@ -63,8 +66,33 @@ h1 #youtube {
 	width: 640px;
 	height: 360px;
 }
-
-
+.navbar{
+  z-index: 2;
+  position:fixed;
+  top:0px;
+  width:100%;
+}
+h3{
+  position: absolute;
+  bottom: 45%;
+  color: #fff;
+  left: 25%;
+  font-size: 5em;
+  text-shadow: 10px, 10px, #FF0000;
+}
+h5{
+  position: absolute;
+  bottom: 55%;
+  color: #00FFFF;
+  left: 25%;
+  font-size: 1.5em;
+  text-shadow: 10px, 10px, #FF0000;
+}
+button{
+  background-color: black;
+  border: 0px;
+  outline: 0;
+}
 
 
 
@@ -86,7 +114,7 @@ display: inline;
   position: absolute;
   color: white;
   font-size: 15px;
-  left: 110px;
+  left: 115px;
   top: 1px;
 }
 .rock {
@@ -102,7 +130,7 @@ display: inline;
   position: absolute;
   color: white;
   font-size: 15px;
-  left: 140px;
+  left: 145px;
   top: 1px;
 }
 .alt {
@@ -134,7 +162,7 @@ display: inline;
   position: absolute;
   color: white;
   font-size: 15px;
-  left: 125px;
+  left: 130px;
   top: 1px;
 }
 .jazz {
@@ -150,7 +178,7 @@ display: inline;
   position: absolute;
   color: white;
   font-size: 15px;
-  left: 140px;
+  left: 150px;
   top: 1px;
 }
 .blues {
@@ -166,7 +194,7 @@ display: inline;
   position: absolute;
   color: white;
   font-size: 15px;
-  left: 135px;
+  left: 140px;
   top: 1px;
 }
 .classical {
@@ -198,7 +226,7 @@ display: inline;
   position: absolute;
   color: white;
   font-size: 15px;
-  left: 130px;
+  left: 135px;
   top: 1px;
 }
 .elect {
@@ -214,7 +242,7 @@ display: inline;
   position: absolute;
   color: white;
   font-size: 15px;
-  left: 115px;
+  left: 125px;
   top: 1px;
 }
 .urban {
@@ -233,23 +261,4 @@ display: inline;
   left: 135px;
   top: 1px;
 }
-button{
-	background-color: black;
-	border: 0px;
-	outline: 0;
-}
 
-.navbar{
-	z-index: 2;
-	position:fixed;
-	top:0px;
- 	width:100%;
-}
-
-h3 {
-  position: absolute;
-  bottom: 45%;
-  left: 25%;
-  font-size: 5em;
-  text-shadow: 10px, 10px, #FF0000;
-}
