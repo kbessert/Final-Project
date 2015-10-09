@@ -15,6 +15,7 @@ h1 {
 	font-size: 50px;
 	display: block;
 }
+
 .navbar, form input {
 	font-size: 18px;
 }
@@ -23,7 +24,7 @@ footer {
 	font-size: 15px;
 	margin-left: 30px;
 }
-img{
+img {
 	width: 110px;
 	height: 110px;
 	display: block;
@@ -62,6 +63,10 @@ h1 #youtube {
 .video {
 	width: 640px;
 	height: 360px;
+}
+.nav img{
+	width: 25px;
+	height: 25px;
 }
 
 
@@ -252,4 +257,20 @@ h3 {
   left: 25%;
   font-size: 5em;
   text-shadow: 10px, 10px, #FF0000;
+}
+div.border {
+	width: 100%;
+	margin: 0 auto;
+    background-color: transparent;
+ 	z-index: 1;
+   
+ 	bottom: 1.4em;
+ 	height: 2em;
+
+    position: absolute;
+    
+    background-size:contain;
+}
+#landingFooter{
+	width: 100%;
 }
