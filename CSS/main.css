@@ -105,21 +105,25 @@ button{
   margin-bottom: 100px;
   text-align: center;
 }
-/*.eventItem {
-  margin-left: 35%;
-  height: 230px;
-}
-.eventImg {
-  margin-top: 10px;
-}
+
 .eventTitle {
   color: gray;
-  font-size: 15px;
+  font-size: 14px;
 }
 .eventTitle a {
   color: #FFF;
-  font-size: 20px;
-}*/
+  font-size: 17px;
+}
+.col-md-2{
+  height:200px;
+  margin-bottom: 60px;
+}
+.col-sm-6{
+  height:200px;
+}
+
+
+
 /**************
 CATEGORIES TEXT
 ****************/
@@ -314,9 +318,4 @@ div.border {
 #pictureConstrain{
   height:100px;
 }
-.col-md-2{
-  height:200px;
-}
-.col-sm-6{
-  height:200px;
-}
+
