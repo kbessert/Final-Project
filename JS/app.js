@@ -12,7 +12,7 @@ $(function() {
      jazzMusicId=["Jazz","videoseries?list=PLcHnJ21xVEoEpf0itQudCgBG_v4USuUtq"],
      elecDanMusicId=["Electronic","videoseries?list=PLcHnJ21xVEoH7s6XHyAzkeKBN3-RF0Vq7"],
      rapMusicId=["Rap","videoseries?list=PLcHnJ21xVEoEHilkcfnWTZzZCCGkEYwns"],
-     classicalMusicId = ["Classical","videoseries?list=PLcHnJ21xVEoGtkxKWo5-g45245aC4MVFM"]
+     classicalMusicId = ["Classical","autoplay=1&&videoseries?list=PLcHnJ21xVEoGtkxKWo5-g45245aC4MVFM"]
     ];
     $.get('http://api.songkick.com/api/3.0/metro_areas/18073/calendar.json?apikey=CVym1urfpjSkA2ph', function(res) {
       if(res.resultsPage.results.event.length) {
@@ -20,15 +20,7 @@ $(function() {
            var eventTime = moment(event.start.datetime).format('M/D/YYYY h:mm A');
           event.performance.forEach(function (perf){
             //console.log(perf.artist.id);
-           
-              var href_value = "http://images.sk-static.com/images/media/profile_images/artists/'+perf.artist.id+'/huge_avatar".href;
-              if (/\.(png)$/.test(href_value)) {
-                 console.log(href_value + " is a pic");
-              } else {
-                 console.log(href_value + " is not a pic");
-              }
-            
-            
+            //console.log('http://images.sk-static.com/images/media/profile_images/artists/'+perf.artist.id+'/huge_avatar');
             if(event.start.datetime!==null){
            // console.log(event.start);
             $("#events").html("");                      
