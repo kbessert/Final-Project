@@ -120,6 +120,8 @@ function init() {
     .mouseleave(function() {
       $("#categories h3").fadeTo(200, 0);
     });
+
+
 function runCategoryApi(playlistId){
       console.log(playlistId);
 

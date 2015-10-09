@@ -93,6 +93,34 @@ button{
   border: 0px;
   outline: 0;
 }
+.eventsHead {
+  color: #00FFFF;
+  font-size: 50px;
+  letter-spacing: 7px;
+  margin-top: 250px;
+  margin-bottom: 100px;
+  text-align: center;
+}
+.eventItem {
+  margin-left: 35%;
+  height: 230px;
+}
+.eventImg {
+  margin-top: 10px;
+}
+.eventTitle {
+  color: gray;
+  font-size: 15px;
+}
+.eventTitle a {
+  color: #FFF;
+  font-size: 20px;
+}
+
+
+
+
+
 
 
 
@@ -146,7 +174,7 @@ display: inline;
   position: absolute;
   color: white;
   font-size: 15px;
-  left: 115px;
+  left: 120px;
   top: 1px;
 }
 .country {
@@ -210,7 +238,7 @@ display: inline;
   position: absolute;
   color: white;
   font-size: 15px;
-  left: 120px;
+  left: 125px;
   top: 1px;
 }
 .gospel {
