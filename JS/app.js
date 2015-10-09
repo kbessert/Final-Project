@@ -142,6 +142,7 @@ var firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 $().ready(function() {
     $('#wrapper').tubular({videoId: 'cpYOYQ4k_GU'});
+<<<<<<< HEAD
 });
 
 var signinCallback = function (result){
@@ -293,3 +294,6 @@ UploadVideo.prototype.pollForVideoStatus = function() {
     }.bind(this)
   });
 };
+=======
+});
+>>>>>>> 2690188a84312aafdac2a417f50e5dc170fb3792
