@@ -93,6 +93,7 @@ button{
   color: #00FFFF;
   font-size: 50px;
   letter-spacing: 7px;
+  margin-top: 200px;
   margin-bottom: 100px;
   text-align: center;
 }
@@ -117,6 +118,7 @@ button{
 #results {
   margin-top: 200px;
   color: #00FFFF;
+  letter-spacing: 7px;
 }
 
 div.border {
