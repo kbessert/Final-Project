@@ -47,31 +47,7 @@
     <img id="landingFooter" src="Images/landingFader.png">
     </div>
     </div>
-    <div ng-controller="mainCtrl" id="main">
-    	 
-       <header>
-                <h1 class="w100 text-center" ><img id="youtube" src="images/youtube-logo.jpg">music search</h1>
-      </header>
-            <div class="row">
-                <div class="col-md-6 col-md-offset-3">
-                    <form action="#">
-                        <p><input type="text" id="search" placeholder="Type something..." autocomplete="on" class="form-control" /></p>
-                        <p><input  type="submit" value="Search" class="form-control btn btn-primary w100"></p>
-                    </form>
-                    <div class="buttons">
-                    </div>
-  <!-- if we needed to change height/width we could use viewBox here -->
 
-     <div id="results">
-        <div class="video">
-        </div> 
-     </div>
-     <!-- <div id="events"></div> !-->
-    </div>
-<div ng-controller="eventCtrl">
-</div>
-    <div class="container-fluid">
-    <div class="col-md-12">
     <h2 class="catHeader" id="catHeader">categories</h2>
     <div id="categories">
         <div class="rap">
@@ -114,6 +90,30 @@
           <button onclick="runCategoryApi(urbanMusicId)"><img src="images/urban2.jpg">
           <h3>urban</h3></button>
         </div>
+    </div>
+
+
+    <div ng-controller="mainCtrl" id="main">
+    	 
+       <header>
+                <h1 class="w100 text-center" ><img id="youtube" src="images/youtube-logo.jpg">music search</h1>
+      </header>
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                    <form action="#">
+                        <p><input type="text" id="search" placeholder="Type something..." autocomplete="on" class="form-control" /></p>
+                        <p><input  type="submit" value="Search" class="form-control btn btn-primary w100"></p>
+                    </form>
+                    <div class="buttons">
+  <!-- if we needed to change height/width we could use viewBox here -->
+
+     <div id="results">
+        <div class="video">
+        </div> 
+     </div>
+     <!-- <div id="events"></div> !-->
+    </div>
+</div>
       </div>
     </div>
     </div>
