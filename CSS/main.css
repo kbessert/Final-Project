@@ -71,7 +71,7 @@ h1 #youtube {
 h3{
   position: absolute;
   color: #fff;
-  top:50%;
+  top:40%;
   left: 25%;
   font-size: 5em;
   text-shadow: 10px, 10px, #FF0000;
@@ -93,7 +93,6 @@ button{
   color: #00FFFF;
   font-size: 50px;
   letter-spacing: 7px;
-  margin-top: 250px;
   margin-bottom: 100px;
   text-align: center;
 }
