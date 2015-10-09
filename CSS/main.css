@@ -21,9 +21,6 @@ h1 {
 .navbar, form input {
   font-size: 17px;
 }
-form {
-  margin-bottom: 200px;
-}
 footer {
   color: gray;
   font-size: 15px;
@@ -34,6 +31,10 @@ img {
   height: 110px;
   display: block;
 }
+/*#events {
+  color: white;
+  display: block;
+}*/
 .displayName {
   color: white;
   display: block;
@@ -60,6 +61,7 @@ h1 #youtube {
   width: 640px;
   height: 360px;
 }
+
 .navbar{
   z-index: 2;
   position:fixed;
@@ -116,6 +118,19 @@ button{
 #results {
   color: #00FFFF;
   letter-spacing: 7px;
+}
+
+div.border {
+  width: 100%;
+  margin: 0 auto;
+    background-color: transparent;
+  z-index: 1;
+   
+  bottom: 1.4em;
+  height: 3em;
+    position: absolute;
+    
+    background-size:contain;
 }
 #landingFooter{
   width: 100%;
@@ -291,36 +306,6 @@ display: inline;
   font-size: 15px;
   top: -80px;
 }
-
-
-
-
-
-
-
-/*************
-MEDIA QUIERIES
-**************/
-@media (min-width: 500px) {
-  .video {
-    width: 30%;
-  }
-  form {
-    width: 20%;
-  }
-  h1 #youtube { 
-  width: 40px;
-  }
-}
-
-
-
-
-
-
-
-
-
 
 
 
