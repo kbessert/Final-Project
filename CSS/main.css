@@ -67,12 +67,12 @@ h1 #youtube {
 	width: 640px;
 	height: 360px;
 }
-<<<<<<< HEAD
+
 .nav img{
 	width: 25px;
 	height: 25px;
 }
-=======
+
 .navbar{
   z-index: 2;
   position:fixed;
@@ -123,10 +123,6 @@ button{
   color: #FFF;
   font-size: 20px;
 }
-
-
-
-
 
 /**************
 CATEGORIES TEXT
@@ -294,7 +290,6 @@ display: inline;
   top: 1px;
 }
 
-<<<<<<< HEAD
 h3 {
   position: absolute;
   bottom: 45%;
@@ -318,5 +313,3 @@ div.border {
 #landingFooter{
 	width: 100%;
 }
-=======
->>>>>>> 1741472f28c89ec24325a1c2f3cbd88c970e66d2
