@@ -16,11 +16,19 @@ $(function() {
     ];
     $.get('http://api.songkick.com/api/3.0/metro_areas/18073/calendar.json?apikey=CVym1urfpjSkA2ph', function(res) {
       if(res.resultsPage.results.event.length) {
-        var s = "<ul class='eventList'>";
         res.resultsPage.results.event.forEach(function (event) {
            var eventTime = moment(event.start.datetime).format('M/D/YYYY h:mm A');
           event.performance.forEach(function (perf){
-            //console.log(event.start);
+            //console.log(perf.artist.id);
+           
+              var href_value = "http://images.sk-static.com/images/media/profile_images/artists/'+perf.artist.id+'/huge_avatar".href;
+              if (/\.(png)$/.test(href_value)) {
+                 console.log(href_value + " is a pic");
+              } else {
+                 console.log(href_value + " is not a pic");
+              }
+            
+            
             if(event.start.datetime!==null){
            // console.log(event.start);
             $("#events").html("");                      
