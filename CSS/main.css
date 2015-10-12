@@ -54,29 +54,47 @@ h1 #youtube {
   width: 200px;
 }
 .video {
-  width: 640px;
+  width: 700px;
   height: 360px;
+  margin-left: 200px;
 }
-
+#sectionYoutube {
+  left: 8.5%;
+}
 .navbar{
   z-index: 2;
   position:fixed;
   top:0px;
   width:100%;
 }
+.embed{
+  margin-right: 30px;
+}
+.play, .pause, .stop{
+  margin-top: 10px;
+  color: gray;
+  width: 15px;
+  background-color: #222222;
+}
+.play:hover, .pause:hover, .stop:hover {
+  color: white;
+}
+.stop {
+  margin-right: 30px;
+}
 h3{
   position: absolute;
   color: #fff;
   top:40%;
-  left: 25%;
+  left: 32%;
   font-size: 5em;
   text-shadow: 10px, 10px, #FF0000;
 }
 h5{
   position: absolute;
-  bottom: 55%;
+  bottom: 57%;
   color: #00FFFF;
-  left: 25%;
+  left: 32%;
   font-size: 1.5em;
   text-shadow: 10px, 10px, #FF0000;
 }
@@ -93,7 +111,8 @@ button{
   text-align: center;
 }
 #categories {
-  margin-left: 5%;
+  margin-left: 20%;
+  margin-right: 20%;
   margin-bottom: 200px;
 }
 .eventTitle {
@@ -144,9 +163,6 @@ a:hover {
   color: #00FFFF;
   text-decoration: none;
 }
-form {
-  margin-bottom: 200px;
-}
 
 
 
@@ -168,6 +184,8 @@ display: inline;
   color: white;
   font-size: 15px;
   top: -80px;
+  margin-right: 30px;
+
 }
 .rock {
   position: relative;
@@ -183,6 +201,7 @@ display: inline;
   color: white;
   font-size: 15px;
   top: -80px;
+  margin-right: 30px;
 }
 .alt {
   position: relative;
@@ -198,6 +217,7 @@ display: inline;
   color: white;
   font-size: 15px;
   top: -80px;
+  margin-right: 30px;
 }
 .country {
   position: relative;
@@ -213,6 +233,7 @@ display: inline;
   color: white;
   font-size: 15px;
   top: -80px;
+  margin-right: 30px;
 }
 .jazz {
   position: relative;
@@ -228,6 +249,7 @@ display: inline;
   color: white;
   font-size: 15px;
   top: -80px;
+  margin-right: 30px;
 }
 .blues {
   position: relative;
@@ -243,6 +265,7 @@ display: inline;
   color: white;
   font-size: 15px;
   top: -80px;
+  margin-right: 30px;
 }
 .classical {
   position: relative;
@@ -258,6 +281,7 @@ display: inline;
   color: white;
   font-size: 15px;
   top: -80px;
+  margin-right: 30px;
 }
 .gospel {
   position: relative;
@@ -273,6 +297,7 @@ display: inline;
   color: white;
   font-size: 15px;
   top: -80px;
+  margin-right: 30px;
 }
 .elect {
   position: relative;
@@ -288,6 +313,7 @@ display: inline;
   color: white;
   font-size: 15px;
   top: -80px;
+  margin-right: 30px;
 }
 .urban {
   position: relative;
@@ -303,6 +329,7 @@ display: inline;
   color: white;
   font-size: 15px;
   top: -80px;
+  margin-right: 30px;
 }
 
 
