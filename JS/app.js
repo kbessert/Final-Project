@@ -1,29 +1,29 @@
 function tplawesome(e,t){res=e;for(var n=0;n<t.length;n++){res=res.replace(/\{\{(.*?)\}\}/g,function(e,r){return t[n][r]})}return res}
+var currentId;
+var customMusicObject={};
 $(function() {
     var $events = $("#events");
     var randomNumber=Math.floor(Math.random()*10);
-     musicIdArray=[
-     bluesMusicId=["Blues","videoseries?list=PLcHnJ21xVEoE8JXUX3uyQkJdHmnk1g7SZ"],
-     countryMusicId=["Country","videoseries?list=PLcHnJ21xVEoGUUA0dO2MoW1Rr-f92HFEY"],
-     punkMusicId=["Punk/Alt","videoseries?list=PLcHnJ21xVEoEnnqFQ6sDnjU9_QTmorXzj"],
-     gospelMusicId=["Gospel","videoseries?list=PLcHnJ21xVEoGuzZlm32m5n3JkjTH2Z1lX"],
-     rockMusicId=["Rock","videoseries?list=PLcHnJ21xVEoF-XkPHSsP1p8Vkp_k1WeKn"],
-     urbanMusicId=["Urban","videoseries?list=PLcHnJ21xVEoGh9gcKQ8eStTAcpPqq8CMg"],
-     jazzMusicId=["Jazz","videoseries?list=PLcHnJ21xVEoEpf0itQudCgBG_v4USuUtq"],
-     elecDanMusicId=["Electronic","videoseries?list=PLcHnJ21xVEoH7s6XHyAzkeKBN3-RF0Vq7"],
-     rapMusicId=["Rap","nQhbzs-zo_0,OANzHByk2dU,M7Hl6T2TX2g,P0ux7l1euAs,HoYXXFJAkXU"],
-     classicalMusicId = ["Classical","videoseries&&autoplay=1?list=PLcHnJ21xVEoGtkxKWo5-g45245aC4MVFM"]
+    var car = {type:"Fiat", model:500, color:"white"};
+    var musicIdArray=[
+     bluesMusicId={playListName:"Blues",playListId:"PLtBIO70rIs,9AB-B5aIxaQ,t5HEzK1XYvI,NJZlAFYN5qI,pvYuQNy4oVc,PYCfN6mJ-c8"},
+     countryMusicId={playListName:"Country",playListId:"NHJKU_iVrtM,RS9gV_E9gzg,64DhqqnGd1U,3m7c1vRBCt4,dP3EX84x6iY,ZHhZO21SGI4"},
+     punkMusicId={playListName:"Punk/Alt",playListId:"ZfvirxZMCr8,6zsIl_2U3KM,gfVpzQjE3Jg,NRQzySw22Pw,EAskUOgclf8,zNHTqikczLg"},
+     gospelMusicId={playListName:"Gospel",playListId:"2Egepsyuzss,fbkJqzNU1iA,nzuz_7aq_DU,Bcz1VXSQcLw,B2BLClDPq2M,HXkMS3zRE0M"},
+     rockMusicId={playListName:"Rock",playListId:"DIXlnn9V88s,p2llUCFxobg,Q488hH9EQRg,2SPURmllUsw,LPbAQJEX7pg,bqOjtXPglt0"},
+     urbanMusicId={playListName:"Urban",playListId:"P-W_KBNFhwU,bcsgYLqMRjg,I5xZxQ4-LcQ,Pgur1DPm-8Y,ZzHI5N6vCAQ"},
+     jazzMusicId={playListName:"Jazz",playListId:"hcHiala5Jq8,LkwTZDXScz8,Zz1HKIB1q9U,4M3LHiT8jfg,ISm3PZiAuRE"},
+     elecDanMusicId={playListName:"Electronic",playListId:"njRkmj9l4Z0,h2uACz02oQU,Ij7MpQ_sJ1Y,6Wuzm15u9-s,gA9a0tl2J7Y"},
+     rapMusicId={playListName:"Rap",playListId:"nQhbzs-zo_0,OANzHByk2dU,M7Hl6T2TX2g,P0ux7l1euAs,HoYXXFJAkXU"},
+     classicalMusicId ={playListName:"Classical",playListId:"oyB8iO-BPgQ,ocdlHb9WJzY,2UGmTZF5XYw,ElZGZbz73jc,8MR1z24W8kc"}
     ];
-    customMusicArray=[];
+    
     $.get('http://api.songkick.com/api/3.0/metro_areas/18073/calendar.json?apikey=CVym1urfpjSkA2ph', function(res) {
       if(res.resultsPage.results.event.length) {
         res.resultsPage.results.event.forEach(function (event) {
            var eventTime = moment(event.start.datetime).format('M/D/YYYY h:mm A');
           event.performance.forEach(function (perf){
-            //console.log(perf.artist.id);
-            //console.log('http://images.sk-static.com/images/media/profile_images/artists/'+perf.artist.id+'/huge_avatar');
             if(event.start.datetime!==null){
-           // console.log(event.start);
             $("#events").html("");                      
               $.get("partials/event-view.html", function(data) {
                   $("#events").append(tplawesome(data, [{
@@ -35,7 +35,6 @@ $(function() {
                   }]));
             });
               }else{
-                //console.log(event.start.date);
                 $("#events").html("");                      
               $.get("partials/event-view.html", function(data) {
                   $("#events").append(tplawesome(data, [{
@@ -61,20 +60,45 @@ $(function() {
           scrollTarget: link.hash
         });
       });
-   runCategoryApi(rapMusicId); 
+   runCategoryApi(musicIdArray[randomNumber]); 
   });
+ function addToPlaylistIfExists(){
+     for(var prop in customMusicObject) {
+      if(customMusicObject.hasOwnProperty(prop)) {
+        if(customMusicObject[prop] === document.getElementById("value").value) {
+           console.log("playlist ran");
+            currentId= ","+ currentId;
+            customMusicObject.playListId+=currentId;
+            console.log(customMusicObject);
+            runCategoryApi(customMusicObject);
+            return; 
+          }
+        }
+      }
+      createNewPlaylist();
+}
+function createNewPlaylist(){
+      console.log("playlist ran");
+      console.log(document.getElementById("value").value);
+    //customMusicObject.customPlayListId.push(eval(document.getElementById("value").value)=[]);
+    customMusicObject.playListName = document.getElementById("value").value;
+    console.log(document.getElementById('value').value);
+    customMusicObject.playListId = currentId;
+    console.log(customMusicObject);
+     $("#results").html("");
+    $.get("partials/playlisttemplate.html", function(data) {
+      $("#options").append(tplawesome(data, [{"option":customMusicObject.playListName}]));
+    });
+    runCategoryApi(customMusicObject);
+}
     $("form").on("submit", function(e) {
-      //runCategoryApi(classicalMusicId);
        e.preventDefault();
-       // prepare the request
        var request = gapi.client.youtube.search.list({
             part: "snippet",
             type: "video",
-            //videoSyndicated:"true",
             videoCategoryId:10,
             q: encodeURIComponent($("#search").val()).replace(/%20/g, "+"),
-            maxResults: 1,
-            
+            maxResults: 1 
        }); 
        // execute the request   
          request.execute(function(response) {
@@ -84,7 +108,7 @@ $(function() {
             $.each(results.items, function(index, item) {
               //console.log(index, item);
               $.get("partials/videotemplate.html", function(data) {
-                console.log(item.id.videoId);
+                currentId=item.id.videoId;
                   $("#results").append(tplawesome(data, [{"title":item.snippet.title, "videoid":item.id.videoId}]));
                   $('div[data-youtube-id]').ntzYoutubeEmbed();
               });
@@ -103,7 +127,6 @@ function resetVideoHeight() {
 }
 function init() {
   $('#wrapper').tubular({videoId: 'cpYOYQ4k_GU'});
-
     gapi.client.setApiKey("AIzaSyDc6CAlmMDlI4EH2YHeGnVVTW-RvU564QM");
     gapi.client.load("youtube", "v3", function() {
         // yt api is ready
@@ -123,13 +146,14 @@ function init() {
     .mouseleave(function() {
       $("#categories h3").fadeTo(200, 0);
     });
-function runCategoryApi(playlistId){
-      console.log(playlistId);
-
+function runCategoryApi(currentPlaylistId){
+      console.log("ran cat api");
+      console.log(currentPlaylistId);      
             $("#results").html("");
               $.get("partials/videotemplate.html", function(data) {
                 $('div.item').remove();
-                  $("#results").append(tplawesome(data, [{"title":playlistId[0], "videoid":playlistId[1]}]));
+                currentId=(currentPlaylistId.playListId);
+                  $("#results").append(tplawesome(data, [{"title":currentPlaylistId.playListName, "videoid":currentPlaylistId.playListId}]));
                     $('div[data-youtube-id]').ntzYoutubeEmbed();
       });
 } 
