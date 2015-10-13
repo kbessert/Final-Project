@@ -1,6 +1,7 @@
 function tplawesome(e,t){res=e;for(var n=0;n<t.length;n++){res=res.replace(/\{\{(.*?)\}\}/g,function(e,r){return t[n][r]})}return res}
 var currentId;
 var customMusicObject={};
+
 $(function() {
     var $events = $("#events");
     var randomNumber=Math.floor(Math.random()*10);
@@ -125,7 +126,9 @@ function createNewPlaylist(){
 function resetVideoHeight() {
     $(".video").css("height", $("#results").width() * 9/16);
 }
+
 function init() {
+
   $('#wrapper').tubular({videoId: 'cpYOYQ4k_GU'});
     gapi.client.setApiKey("AIzaSyDc6CAlmMDlI4EH2YHeGnVVTW-RvU564QM");
     gapi.client.load("youtube", "v3", function() {
@@ -157,15 +160,6 @@ function runCategoryApi(currentPlaylistId){
                     $('div[data-youtube-id]').ntzYoutubeEmbed();
       });
 } 
-
-
-
-
-
-
-
-
-
 
 
 
