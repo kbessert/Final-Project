@@ -59,7 +59,8 @@ h1 #youtube {
   margin-left: 200px;
 }
 #sectionYoutube {
-  left: 8.5%;
+  margin-bottom: 12%;
+  left: 1%;
 }
 .navbar{
   z-index: 2;
@@ -71,7 +72,7 @@ h1 #youtube {
   margin-right: 30px;
 }
 .play, .pause, .stop{
-  margin-top: 10px;
+  margin-top: 12px;
   color: gray;
   width: 15px;
   background-color: #222222;
@@ -163,6 +164,20 @@ a:hover {
   color: #00FFFF;
   text-decoration: none;
 }
+.playlist{
+  margin-top: 10px;
+  margin-right: 10px;
+}
+#playlistSubmit {
+  color: gray;
+}
+form {
+  margin-bottom: 200px;
+}
+
+
+
+
 
 
 

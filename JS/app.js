@@ -166,190 +166,181 @@ function runCategoryApi(currentPlaylistId){
 
 
 
+ var GOOGLE_PLUS_SCRIPT_URL = 'https://apis.google.com/js/client:plusone.js';
+  var CHANNELS_SERVICE_URL = 'https://www.googleapis.com/youtube/v3/channels';
+  var VIDEOS_UPLOAD_SERVICE_URL = 'https://www.googleapis.com/upload/youtube/v3/videos?uploadType=resumable&part=snippet';
+  var VIDEOS_SERVICE_URL = 'https://www.googleapis.com/youtube/v3/videos';
+  var INITIAL_STATUS_POLLING_INTERVAL_MS = 15 * 1000;
 
+  var accessToken;
 
+  window.oauth2Callback = function(authResult) {
+    if (authResult['access_token']) {
+      accessToken = authResult['access_token'];
 
-
-var signinCallback = function (result){
-  if(result.access_token) {
-    var uploadVideo = new UploadVideo();
-    uploadVideo.ready(result.access_token);
-  }
-};
-
-var STATUS_POLLING_INTERVAL_MILLIS = 60 * 1000; // One minute.
-
-
-/**
- * YouTube video uploader class
- *
- * @constructor
- */
-var UploadVideo = function() {
-  /**
-   * The array of tags for the new YouTube video.
-   *
-   * @attribute tags
-   * @type Array.<string>
-   * @default ['google-cors-upload']
-   */
-  this.tags = ['youtube-cors-upload'];
-
-  /**
-   * The numeric YouTube
-   * [category id](https://developers.google.com/apis-explorer/#p/youtube/v3/youtube.videoCategories.list?part=snippet®ionCode=us).
-   *
-   * @attribute categoryId
-   * @type number
-   * @default 22
-   */
-  this.categoryId = 22;
-
-  /**
-   * The id of the new video.
-   *
-   * @attribute videoId
-   * @type string
-   * @default ''
-   */
-  this.videoId = '';
-
-  this.uploadStartTime = 0;
-};
-
-
-UploadVideo.prototype.ready = function(accessToken) {
-  this.accessToken = accessToken;
-  this.gapi = gapi;
-  this.authenticated = true;
-  this.gapi.client.request({
-    path: '/youtube/v3/channels',
-    params: {
-      part: 'snippet',
-      mine: true
-    },
-    callback: function(response) {
-      if (response.error) {
-        console.log(response.error.message);
-      } else {
+      $.ajax({
+        url: CHANNELS_SERVICE_URL,
+        method: 'GET',
+        headers: {
+          Authorization: 'Bearer ' + accessToken
+        },
+        data: {
+          part: 'snippet',
+          mine: true
+        }
+      }).done(function(response) {
         $('#channel-name').text(response.items[0].snippet.title);
         $('#channel-thumbnail').attr('src', response.items[0].snippet.thumbnails.default.url);
 
         $('.pre-sign-in').hide();
         $('.post-sign-in').show();
-      }
-    }.bind(this)
-  });
-  $('#button').on("click", this.handleUploadClicked.bind(this));
-};
-
-/**
- * Uploads a video file to YouTube.
- *
- * @method uploadFile
- * @param {object} file File object corresponding to the video to upload.
- */
-UploadVideo.prototype.uploadFile = function(file) {
-  var metadata = {
-    snippet: {
-      title: $('#title').val(),
-      description: $('#description').text(),
-      tags: this.tags,
-      categoryId: this.categoryId
-    },
-    status: {
-      privacyStatus: $('#privacy-status option:selected').text()
+      });
     }
   };
-  var uploader = new MediaUploader({
-    baseUrl: 'https://www.googleapis.com/upload/youtube/v3/videos',
-    file: file,
-    token: this.accessToken,
-    metadata: metadata,
-    params: {
-      part: Object.keys(metadata).join(',')
-    },
-    onError: function(data) {
-      var message = data;
-      // Assuming the error is raised by the YouTube API, data will be
-      // a JSON string with error.message set. That may not be the
-      // only time onError will be raised, though.
-      try {
-        var errorResponse = JSON.parse(data);
-        message = errorResponse.error.message;
-      } finally {
-        alert(message);
-      }
-    }.bind(this),
-    onProgress: function(data) {
-      var currentTime = Date.now();
-      var bytesUploaded = data.loaded;
-      var totalBytes = data.total;
-      // The times are in millis, so we need to divide by 1000 to get seconds.
-      var bytesPerSecond = bytesUploaded / ((currentTime - this.uploadStartTime) / 1000);
-      var estimatedSecondsRemaining = (totalBytes - bytesUploaded) / bytesPerSecond;
-      var percentageComplete = (bytesUploaded * 100) / totalBytes;
 
-      $('#upload-progress').attr({
-        value: bytesUploaded,
-        max: totalBytes
-      });
+  function initiateUpload(e) {
+    e.preventDefault();
 
-      $('#percent-transferred').text(percentageComplete);
-      $('#bytes-transferred').text(bytesUploaded);
-      $('#total-bytes').text(totalBytes);
+    var file = $('#file').get(0).files[0];
+    if (file) {
+      $('#submit').attr('disabled', true);
 
-      $('.during-upload').show();
-    }.bind(this),
-    onComplete: function(data) {
-      var uploadResponse = JSON.parse(data);
-      this.videoId = uploadResponse.id;
-      $('#video-id').text(this.videoId);
-      $('.post-upload').show();
-      this.pollForVideoStatus();
-    }.bind(this)
-  });
-  // This won't correspond to the *exact* start of the upload, but it should be close enough.
-  this.uploadStartTime = Date.now();
-  uploader.upload();
-};
-
-UploadVideo.prototype.handleUploadClicked = function() {
-  $('#button').attr('disabled', true);
-  this.uploadFile($('#file').get(0).files[0]);
-};
-
-UploadVideo.prototype.pollForVideoStatus = function() {
-  this.gapi.client.request({
-    path: '/youtube/v3/videos',
-    params: {
-      part: 'status,player',
-      id: this.videoId
-    },
-    callback: function(response) {
-      if (response.error) {
-        // The status polling failed.
-        console.log(response.error.message);
-        setTimeout(this.pollForVideoStatus.bind(this), STATUS_POLLING_INTERVAL_MILLIS);
-      } else {
-        var uploadStatus = response.items[0].status.uploadStatus;
-        switch (uploadStatus) {
-          // This is a non-final status, so we need to poll again.
-          case 'uploaded':
-            $('#post-upload-status').append('<li>Upload status: ' + uploadStatus + '</li>');
-            setTimeout(this.pollForVideoStatus.bind(this), STATUS_POLLING_INTERVAL_MILLIS);
-            break;
-          // The video was successfully transcoded and is available.
-          case 'processed':
-            $('#player').append(response.items[0].player.embedHtml);
-            $('#post-upload-status').append('<li>Final status.</li>');
-            break;
-          // All other statuses indicate a permanent transcoding failure.
-          default:
-            $('#post-upload-status').append('<li>Transcoding failed.</li>');
-            break;
+      var metadata = {
+        snippet: {
+          title: $('#title').val(),
+          description: $('#description').val(),
+          categoryId: 22
         }
+      };
+
+      $.ajax({
+        url: VIDEOS_UPLOAD_SERVICE_URL,
+        method: 'POST',
+        contentType: 'application/json',
+        headers: {
+          Authorization: 'Bearer ' + accessToken,
+          'x-upload-content-length': file.size,
+          'x-upload-content-type': file.type
+        },
+        data: JSON.stringify(metadata)
+      }).done(function(data, textStatus, jqXHR) {
+        resumableUpload({
+          url: jqXHR.getResponseHeader('Location'),
+          file: file,
+          start: 0
+        });
+      });
+    }
+  }
+
+  function resumableUpload(options) {
+    var ajax = $.ajax({
+      url: options.url,
+      method: 'PUT',
+      contentType: options.file.type,
+      headers: {
+        'Content-Range': 'bytes ' + options.start + '-' + (options.file.size - 1) + '/' + options.file.size
+      },
+      xhr: function() {
+        // Thanks to http://stackoverflow.com/a/8758614/385997
+        var xhr = $.ajaxSettings.xhr();
+
+        if (xhr.upload) {
+          xhr.upload.addEventListener(
+            'progress',
+            function(e) {
+              if(e.lengthComputable) {
+                var bytesTransferred = e.loaded;
+                var totalBytes = e.total;
+                var percentage = Math.round(100 * bytesTransferred / totalBytes);
+
+                $('#upload-progress').attr({
+                  value: bytesTransferred,
+                  max: totalBytes
+                });
+
+                $('#percent-transferred').text(percentage);
+                $('#bytes-transferred').text(bytesTransferred);
+                $('#total-bytes').text(totalBytes);
+
+                $('.during-upload').show();
+              }
+            },
+            false
+          );
+        }
+
+        return xhr;
+      },
+      processData: false,
+      data: options.file
+    });
+
+    ajax.done(function(response) {
+      var videoId = response.id;
+      $('#video-id').text(videoId);
+      $('.post-upload').show();
+      checkVideoStatus(videoId, INITIAL_STATUS_POLLING_INTERVAL_MS);
+    });
+
+    ajax.fail(function() {
+      $('#submit').click(function() {
+        alert('Not yet implemented!');
+      });
+      $('#submit').val('Resume Upload');
+      $('#submit').attr('disabled', false);
+    });
+  }
+
+  function checkVideoStatus(videoId, waitForNextPoll) {
+    $.ajax({
+      url: VIDEOS_SERVICE_URL,
+      method: 'GET',
+      headers: {
+        Authorization: 'Bearer ' + accessToken
+      },
+      data: {
+        part: 'status,processingDetails,player',
+        id: videoId
       }
-    }.bind(this)
+    }).done(function(response) {
+      var processingStatus = response.items[0].processingDetails.processingStatus;
+      var uploadStatus = response.items[0].status.uploadStatus;
+
+      $('#post-upload-status').append('<li>Processing status: ' + processingStatus + ', upload status: ' + uploadStatus + '</li>');
+
+      if (processingStatus == 'processing') {
+        setTimeout(function() {
+          checkVideoStatus(videoId, waitForNextPoll * 2);
+        }, waitForNextPoll);
+      } else {
+        if (uploadStatus == 'processed') {
+          $('#player').append(response.items[0].player.embedHtml);
+        }
+
+        $('#post-upload-status').append('<li>Final status.</li>');
+      }
+    });
+  }
+
+  $(function() {
+    $.getScript(GOOGLE_PLUS_SCRIPT_URL);
+
+    $('#upload-form').submit(initiateUpload);
   });
-};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

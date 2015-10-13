@@ -29,12 +29,12 @@
             <li class="nav"><a href="#music">Listen</a></li>
             <li class="nav"><a href="">Upload</a></li>
             <li class="nav"><a href="#attend">Attend</a></li>
-            <div><select id="options"></select></div>
-            <input id="value" type="text" placeholder="Enter to new playlist name"required>
-            <button name="data" type="button" onclick="addToPlaylistIfExists()">Submit</button>
           </ul>
 
           <ul class="nav navbar-nav navbar-right">
+            <li class="nav playlist"><div><select id="options"></select></div></li>
+            <li class="nav playlist"><input id="value" type="text" placeholder="Enter playlist name"required></li>
+            <li class="nav playlist"><button id="playlistSubmit" name="data" type="button" onclick="addToPlaylistIfExists()">Submit</button></li>
             <li class="nav"><div class="embed"><button class="pause"><i class="fa fa-pause"></i></button></div></li>
             <li class="nav"><div class="embed"><button class="play"><i class="fa fa-play"></i></button></div></li>
             <li class="nav"><div class="embed"><button class="stop"><i class="fa fa-stop"></i></button></div></li>
@@ -107,6 +107,67 @@
           <h3>urban</h3></button>
         </div>
       </div>
+
+
+    <span id="signinButton" class="pre-sign-in">
+      <span
+          class="g-signin"
+          data-callback="oauth2Callback"
+          data-clientid="463546373689-fkki0qlb23hegub236t2a2l9mgol5cdm.apps.googleusercontent.com"
+          data-cookiepolicy="single_host_origin"
+          data-scope="https://www.googleapis.com/auth/youtube.readonly https://www.googleapis.com/auth/youtube.upload">
+      </span>
+    </span>
+
+
+
+
+
+
+      <div class="post-sign-in">
+        <div>
+          <img id="channel-thumbnail">
+          <span id="channel-name"></span>
+        </div>
+
+        <form id="upload-form">
+          <div>
+            <label for="title">Title:</label>
+            <input id="title" type="text" value="Default Title">
+          </div>
+          <div>
+            <label for="description">Description:</label>
+            <textarea id="description">Default description.</textarea>
+          </div>
+          <div>
+            <input id="file" type="file">
+          </div>
+          <input id="submit" type="submit" value="Upload">
+        </form>
+
+        <div class="during-upload">
+          <p><span id="percent-transferred"></span>% done (<span id="bytes-transferred"></span>/<span id="total-bytes"></span> bytes)</p>
+          <progress id="upload-progress" max="1" value="0"></progress>
+        </div>
+
+        <div class="post-upload">
+          <p>Uploaded video with id <span id="video-id"></span>. Polling for status...</p>
+          <ul id="post-upload-status"></ul>
+          <div id="player"></div>
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
 
    
     <div id="sectionYoutube" class="col-md-6 col-md-offset-3">

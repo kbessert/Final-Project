@@ -83,8 +83,8 @@
       }
 
       this.player = new YT.Player( this.movieContainerID, {
-        height    : '100%',
-        width     : '100%',
+        height    : '155%',
+        width     : '155%',
         //videoId   : this.el.data('youtube-id'),
         //playlist : this.el.data('youtube-id'),
         playerVars: playerVars,
