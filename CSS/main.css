@@ -56,7 +56,7 @@ h1 #youtube {
 .video {
   width: 700px;
   height: 360px;
-  margin-left: 200px;
+  margin-left: 150px;
 }
 #sectionYoutube {
   margin-bottom: 12%;
@@ -219,7 +219,7 @@ ul li .eventLink:hover {
   color: #fff;
 }
 h4 {
-  margin-left: 7%;
+  margin-left: 6%;
   color: lightgray;
 }
 .snapwidget-widget {
