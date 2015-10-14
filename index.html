@@ -27,7 +27,61 @@
           <ul class="nav navbar-nav">
             <li class="nav"><a href="#landing" id="metro">Metro Music</a></li>
             <li class="nav"><a href="#music">Listen</a></li>
-            <li class="nav"><a href="">Upload</a></li>
+                <li class="dropdown">
+                  <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Upload <span class="caret"></span></a>
+                  <ul class="dropdown-menu">                 
+                        <li><a class="eventLink" href="https://tourbox.songkick.com/events/new">Event</a></li>
+                        <li role="separator" class="divider"></li>
+                    <li>
+                          <h4>Video</h4>
+                          <span id="signinButton" class="pre-sign-in">
+                              <span
+                                  class="g-signin"
+                                  data-callback="oauth2Callback"
+                                  data-clientid="463546373689-fkki0qlb23hegub236t2a2l9mgol5cdm.apps.googleusercontent.com"
+                                  data-cookiepolicy="single_host_origin"
+                                  data-scope="https://www.googleapis.com/auth/youtube.readonly https://www.googleapis.com/auth/youtube.upload">
+                              </span>
+                            </span>
+                            
+                            <div id="upload">
+                                <div class="post-sign-in">
+                                  <div>
+                                    <img id="channel-thumbnail">
+                                    <span id="channel-name"></span>
+                                  </div>
+
+                            <form id="upload-form">
+                              <div>
+                                <label for="title">Title:</label>
+                                <input id="title" type="text" value="Default Title">
+                              </div>
+                              <div>
+                                <label for="description">Description:</label>
+                                <textarea id="description">Default description.</textarea>
+                              </div>
+                              <div>
+                                <input id="file" type="file">
+                              </div>
+                                <input id="submit" type="submit" value="Upload">
+                            </form>
+
+                            <div class="during-upload">
+                              <p><span id="percent-transferred"></span>% done (<span id="bytes-transferred"></span>/<span id="total-bytes"></span> bytes)</p>
+                              <progress id="upload-progress" max="1" value="0"></progress>
+                            </div>
+
+                            <div class="post-upload">
+                              <p>Uploaded video with id <span id="video-id"></span>. Polling for status...</p>
+                              <ul id="post-upload-status"></ul>
+                              <div id="player"></div>
+                            </div>
+                          </div>
+                        </div>
+                    </li>
+                  </ul>
+
+
             <li class="nav"><a href="#attend">Attend</a></li>
           </ul>
 
@@ -47,9 +101,7 @@
     </nav>
 
 
-
-
-
+  
 
     <div class="container-fluid">
       <div class="metro">
@@ -109,65 +161,6 @@
       </div>
 
 
-    <span id="signinButton" class="pre-sign-in">
-      <span
-          class="g-signin"
-          data-callback="oauth2Callback"
-          data-clientid="463546373689-fkki0qlb23hegub236t2a2l9mgol5cdm.apps.googleusercontent.com"
-          data-cookiepolicy="single_host_origin"
-          data-scope="https://www.googleapis.com/auth/youtube.readonly https://www.googleapis.com/auth/youtube.upload">
-      </span>
-    </span>
-
-
-
-
-
-
-      <div class="post-sign-in">
-        <div>
-          <img id="channel-thumbnail">
-          <span id="channel-name"></span>
-        </div>
-
-        <form id="upload-form">
-          <div>
-            <label for="title">Title:</label>
-            <input id="title" type="text" value="Default Title">
-          </div>
-          <div>
-            <label for="description">Description:</label>
-            <textarea id="description">Default description.</textarea>
-          </div>
-          <div>
-            <input id="file" type="file">
-          </div>
-          <input id="submit" type="submit" value="Upload">
-        </form>
-
-        <div class="during-upload">
-          <p><span id="percent-transferred"></span>% done (<span id="bytes-transferred"></span>/<span id="total-bytes"></span> bytes)</p>
-          <progress id="upload-progress" max="1" value="0"></progress>
-        </div>
-
-        <div class="post-upload">
-          <p>Uploaded video with id <span id="video-id"></span>. Polling for status...</p>
-          <ul id="post-upload-status"></ul>
-          <div id="player"></div>
-        </div>
-      </div>
-
-
-
-
-
-
-
-
-
-
-
-
 
    
     <div id="sectionYoutube" class="col-md-6 col-md-offset-3">
@@ -184,20 +177,31 @@
     </div>
             <div class="row">
                 <div class="col-md-6 col-md-offset-3">
-                    <form action="#">
+                    <form id="searchForm" action="#">
                         <p><input type="text" id="search" placeholder="Type something..." autocomplete="on" class="form-control" /></p>
                         <p><input  type="submit" value="Search" class="form-control btn btn-primary w100"></p>
                     </form>
                     </div>
   <!-- if we needed to change height/width we could use viewBox here -->
      <!-- <div id="events"></div> !-->
-    </div>
+ 
+
+
+
+
+
 <div ng-controller="eventCtrl">
 </div>
    
     <div class="container-fluid">
     <div class="col-md-12"><div id="attend"></div>
     <h2 class="eventsHead">Attend </h2>
+
+      <!-- Instagram API-->
+    <iframe src="http://snapwidget.com/sc/?h=ZGV0cm9pdG11c2ljfGlufDE1MHwzfDN8fG5vfDV8ZmFkZUlufG9uU3RhcnR8eWVzfG5v&ve=131015" title="Instagram Widget" class="snapwidget-widget" allowTransparency="true" frameborder="0" scrolling="yes" style="border:none; overflow:hidden; width:80%; height:150px"></iframe>
+      <!-- Instagram API End-->
+
+
     <div id="events">
     </div>
     </div>
@@ -208,13 +212,13 @@
     <footer>
       <p>&copy; metro music | 2015</p>
     </footer>
+<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
 <script src="//apis.google.com/js/client:plusone.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.js"></script>
-<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
 <script type="text/javascript" charset="utf-8" src="js/jquery.tubular.1.0.js"></script>
 <script type="text/javascript" src="js/smoothScroll/smoothscroll.js"></script>
 <script type="text/javascript" src="js/ntzYoutubeEmbed.js"></script>
-
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/app.js"></script>
 <script src="https://apis.google.com/js/client.js?onload=init"></script>
 

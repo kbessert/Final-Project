@@ -91,7 +91,8 @@ function createNewPlaylist(){
     });
     runCategoryApi(customMusicObject);
 }
-    $("form").on("submit", function(e) {
+var oForm = document.getElementById('searchForm');
+    $(oForm).on("submit", function(e) {
        e.preventDefault();
        var request = gapi.client.youtube.search.list({
             part: "snippet",
@@ -328,9 +329,6 @@ function runCategoryApi(currentPlaylistId){
 
     $('#upload-form').submit(initiateUpload);
   });
-
-
-
 
 
 

@@ -108,7 +108,7 @@ button{
   color: #00FFFF;
   font-size: 50px;
   letter-spacing: 7px;
-  margin-bottom: 100px;
+  margin-bottom: 80px;
   text-align: center;
 }
 #categories {
@@ -126,6 +126,7 @@ button{
 }
 .col-md-2{
   height:200px;
+  margin-left: 7%;
   margin-bottom: 60px;
 }
 .col-sm-6{
@@ -171,9 +172,61 @@ a:hover {
 #playlistSubmit {
   color: gray;
 }
-form {
+#searchForm {
   margin-bottom: 200px;
 }
+#upload {
+  color: gray;
+  font-size: 20px;
+  width: 80%;
+  margin: 7%;
+}
+#upload-form {
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+.dropdown-menu {
+  background-color: #222222;
+  width: 400%;
+}
+#channel-name {
+  color: white;
+}
+label {
+  margin-right: 20px;
+}
+#channel-thumbnail {
+  width: 50%;
+  height: 15%;
+  margin-bottom: 20px;
+}
+textarea {
+  margin-bottom: 20px;
+}
+.during-upload {
+  margin-top: 40px;
+}
+ul li .eventLink {
+  margin-left: 3px;
+  color: lightgray;
+  font-size: 19px;
+}
+ul li .eventLink:hover {
+  color: white;
+  background-color: #222222;
+}
+.divider {
+  color: #fff;
+}
+h4 {
+  margin-left: 7%;
+  color: lightgray;
+}
+.snapwidget-widget {
+  margin-left: 10%;
+  margin-bottom: 5%;
+}
+
 
 
 
