@@ -322,3 +322,8 @@ function runCategoryApi(currentPlaylistId){
 
     $('#upload-form').submit(initiateUpload);
   });
+
+
+  $('li.dropdown ul').find('a').on('click', function() {
+    window.location = $(this).attr('href');
+});
