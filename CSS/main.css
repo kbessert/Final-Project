@@ -410,22 +410,6 @@ display: inline;
 
 
 
-@media (min-width: 800px) and (max-width: 1250px) {
-  #sectionYoutube {
-    margin-bottom: 12%;
-    margin-right: 50%;
-    width: 10%;
-  }
-  #categories {
-    margin-left: -300px;
-  }
-}
-
-
-
-
-
-
 
 
 
