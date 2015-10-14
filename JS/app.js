@@ -1,6 +1,6 @@
 function tplawesome(e,t){res=e;for(var n=0;n<t.length;n++){res=res.replace(/\{\{(.*?)\}\}/g,function(e,r){return t[n][r]})}return res}
 var currentId;
-var customMusicObject={};
+var customMusicObject={playListName:"Uploads",playListId:""};
 
 $(function() {
     var $events = $("#events");
@@ -60,7 +60,8 @@ $(function() {
           scrollTarget: link.hash
         });
       });
-   runCategoryApi(musicIdArray[randomNumber]); 
+      console.log(musicIdArray[randomNumber]);
+   runCategoryApi(jazzMusicId); 
 });
 function addToPlaylistIfExists(){
      for(var prop in customMusicObject) {
@@ -129,6 +130,10 @@ function resetVideoHeight() {
 
 function initializeGapi() {
 
+      $.get("partials/playlisttemplate.html", function(data) {
+        $("#options").append(tplawesome(data, [{"option":customMusicObject.playListName}]));
+      });
+
   $('#wrapper').tubular({videoId: 'cpYOYQ4k_GU'});
     gapi.client.setApiKey("AIzaSyDc6CAlmMDlI4EH2YHeGnVVTW-RvU564QM");
     gapi.client.load("youtube", "v3", function() {
@@ -155,6 +160,7 @@ function runCategoryApi(currentPlaylistId){
             $("#results").html("");
               $.get("partials/videotemplate.html", function(data) {
                 $('div.item').remove();
+                console.log(currentPlaylistId.playListName,currentPlaylistId.playListId);
                 currentId=(currentPlaylistId.playListId);
                   $("#results").append(tplawesome(data, [{"title":currentPlaylistId.playListName, "videoid":currentPlaylistId.playListId}]));
                     $('div[data-youtube-id]').ntzYoutubeEmbed();
@@ -309,7 +315,15 @@ function runCategoryApi(currentPlaylistId){
         }, waitForNextPoll);
       } else {
         if (uploadStatus === 'processed') {
-         
+          customMusicObject.playListId+=videoId;
+           $("#results").html("");
+              $.get("partials/videotemplate.html", function(data) {
+                $('div.item').remove();
+                currentId=(customMusicObject.playListId);
+                  $("#results").append(tplawesome(data, [{"title":customMusicObject.playListName, "videoid":customMusicObject.playListId}]));
+                    $('div[data-youtube-id]').ntzYoutubeEmbed();
+                  });
+         console.log(customMusicObject);
         }
 
         $('#post-upload-status').append('<li>Final status.</li>');
