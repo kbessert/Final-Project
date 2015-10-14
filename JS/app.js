@@ -5,7 +5,6 @@ var customMusicObject={};
 $(function() {
     var $events = $("#events");
     var randomNumber=Math.floor(Math.random()*10);
-    var car = {type:"Fiat", model:500, color:"white"};
     var musicIdArray=[
      bluesMusicId={playListName:"Blues",playListId:"PLtBIO70rIs,9AB-B5aIxaQ,t5HEzK1XYvI,NJZlAFYN5qI,pvYuQNy4oVc,PYCfN6mJ-c8"},
      countryMusicId={playListName:"Country",playListId:"NHJKU_iVrtM,RS9gV_E9gzg,64DhqqnGd1U,3m7c1vRBCt4,dP3EX84x6iY,ZHhZO21SGI4"},
@@ -51,7 +50,7 @@ $(function() {
        });        
      }
    });
-   $('ul.nav navbar-nav a').smoothScroll();
+   $('nav').smoothScroll();
       $('li a').click(function(event) {
         console.log("smoothScroll");
         event.preventDefault();
@@ -62,8 +61,8 @@ $(function() {
         });
       });
    runCategoryApi(musicIdArray[randomNumber]); 
-  });
- function addToPlaylistIfExists(){
+});
+function addToPlaylistIfExists(){
      for(var prop in customMusicObject) {
       if(customMusicObject.hasOwnProperty(prop)) {
         if(customMusicObject[prop] === document.getElementById("value").value) {
@@ -77,19 +76,19 @@ $(function() {
         }
       }
       createNewPlaylist();
-}
-function createNewPlaylist(){
+  }
+    function createNewPlaylist(){
       console.log("playlist ran");
       console.log(document.getElementById("value").value);
-    //customMusicObject.customPlayListId.push(eval(document.getElementById("value").value)=[]);
-    customMusicObject.playListName = document.getElementById("value").value;
-    console.log(document.getElementById('value').value);
-    customMusicObject.playListId = currentId;
-    console.log(customMusicObject);
-     $("#results").html("");
-    $.get("partials/playlisttemplate.html", function(data) {
-      $("#options").append(tplawesome(data, [{"option":customMusicObject.playListName}]));
-    });
+      //customMusicObject.customPlayListId.push(eval(document.getElementById("value").value)=[]);
+      customMusicObject.playListName = document.getElementById("value").value;
+      console.log(document.getElementById('value').value);
+      customMusicObject.playListId = currentId;
+      console.log(customMusicObject);
+       $("#results").html("");
+      $.get("partials/playlisttemplate.html", function(data) {
+        $("#options").append(tplawesome(data, [{"option":customMusicObject.playListName}]));
+      });
     runCategoryApi(customMusicObject);
 }
 var oForm = document.getElementById('searchForm');
@@ -128,7 +127,7 @@ function resetVideoHeight() {
     $(".video").css("height", $("#results").width() * 9/16);
 }
 
-function init() {
+function initializeGapi() {
 
   $('#wrapper').tubular({videoId: 'cpYOYQ4k_GU'});
     gapi.client.setApiKey("AIzaSyDc6CAlmMDlI4EH2YHeGnVVTW-RvU564QM");
@@ -204,7 +203,7 @@ function runCategoryApi(currentPlaylistId){
         snippet: {
           title: $('#title').val(),
           description: $('#description').val(),
-          categoryId: 22
+          categoryId: 10
         }
       };
 
@@ -304,13 +303,13 @@ function runCategoryApi(currentPlaylistId){
 
       $('#post-upload-status').append('<li>Processing status: ' + processingStatus + ', upload status: ' + uploadStatus + '</li>');
 
-      if (processingStatus == 'processing') {
+      if (processingStatus === 'processing') {
         setTimeout(function() {
           checkVideoStatus(videoId, waitForNextPoll * 2);
         }, waitForNextPoll);
       } else {
-        if (uploadStatus == 'processed') {
-          $('#player').append(response.items[0].player.embedHtml);
+        if (uploadStatus === 'processed') {
+         
         }
 
         $('#post-upload-status').append('<li>Final status.</li>');
@@ -323,16 +322,3 @@ function runCategoryApi(currentPlaylistId){
 
     $('#upload-form').submit(initiateUpload);
   });
-
-
-
-
-
-
-
-
-
-
-
-
-
