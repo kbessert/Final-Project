@@ -341,3 +341,10 @@ function runCategoryApi(currentPlaylistId){
   $('li.dropdown ul').find('a').on('click', function() {
     window.location = $(this).attr('href');
 });
+
+
+
+
+
+
+  

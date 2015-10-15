@@ -89,7 +89,7 @@ h3{
   top:40%;
   left: 32%;
   font-size: 5em;
-  text-shadow: 10px, 10px, #FF0000;
+  text-shadow: 0px 0px 20px #00FFFF;
 }
 h5{
   position: absolute;
@@ -97,7 +97,7 @@ h5{
   color: #00FFFF;
   left: 32%;
   font-size: 1.5em;
-  text-shadow: 10px, 10px, #FF0000;
+  text-shadow: 0px 0px 10px #000000;
 }
 button{
   background-color: black;
@@ -171,6 +171,12 @@ a:hover {
 }
 #playlistSubmit {
   color: gray;
+  border: 1px solid gray;
+  background-color: #222222;
+}
+#playlistSubmit:hover {
+  color: white;
+  border: 1px solid white;
 }
 #searchForm {
   margin-bottom: 200px;
@@ -223,7 +229,7 @@ h4 {
   color: lightgray;
 }
 .instansive-widget {
-  margin-left: 10%;
+  margin-left: 7.5%;
 }
 #hashtag {
   margin-left: 10%;
@@ -232,8 +238,19 @@ h4 {
   font-size: 15px;
   letter-spacing: 3px;
 }
-
-
+.form-control {
+  color: #fff;
+  background-color: #222222;
+  height: 50px;
+}
+.form-control:hover {
+  color: #fff;
+  background-color: #222222;
+}
+.form-control:active {
+  color: #fff;
+  background-color: #222222;
+}
 
 
 
