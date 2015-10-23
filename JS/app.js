@@ -18,7 +18,7 @@ $(function() {
      classicalMusicId ={playListName:"Classical",playListId:"oyB8iO-BPgQ,ocdlHb9WJzY,2UGmTZF5XYw,ElZGZbz73jc,8MR1z24W8kc"}
     ];
     
-    $.get('http://api.songkick.com/api/3.0/metro_areas/18073/calendar.json?apikey=CVym1urfpjSkA2ph', function(res) {
+    $.get('https://api.songkick.com/api/3.0/metro_areas/18073/calendar.json?apikey=CVym1urfpjSkA2ph', function(res) {
       if(res.resultsPage.results.event.length) {
         res.resultsPage.results.event.forEach(function (event) {
            var eventTime = moment(event.start.datetime).format('M/D/YYYY h:mm A');
@@ -94,14 +94,22 @@ function addToPlaylistIfExists(){
 }
 var oForm = document.getElementById('searchForm');
     $(oForm).on("submit", function(e) {
-       e.preventDefault();
+      e.preventDefault();
+    // Step 4: Load the Google+ API
+    gapi.client.load('youtube', 'v3', function() {
+        console.log('youtube API loaded...');
+        
+         
        var request = gapi.client.youtube.search.list({
+
             part: "snippet",
             type: "video",
             videoCategoryId:10,
             q: encodeURIComponent($("#search").val()).replace(/%20/g, "+"),
             maxResults: 1 
+
        }); 
+        // Step 6: Execute the API request
        // execute the request   
          request.execute(function(response) {
           //console.log(response.result.items);
@@ -117,7 +125,8 @@ var oForm = document.getElementById('searchForm');
             });
             resetVideoHeight();
          });
-       });
+        });
+      });
   $('button').on('click', function(e){
         e.preventDefault();
         $('div[data-youtube-id]').trigger('player-pause');         
@@ -127,18 +136,18 @@ var oForm = document.getElementById('searchForm');
 function resetVideoHeight() {
     $(".video").css("height", $("#results").width() * 9/16);
 }
-
+$('#wrapper').tubular({videoId: 'cpYOYQ4k_GU'});
 function initializeGapi() {
 
       $.get("partials/playlisttemplate.html", function(data) {
         $("#options").append(tplawesome(data, [{"option":customMusicObject.playListName}]));
       });
 
-  $('#wrapper').tubular({videoId: 'cpYOYQ4k_GU'});
-    gapi.client.setApiKey("AIzaSyDc6CAlmMDlI4EH2YHeGnVVTW-RvU564QM");
-    gapi.client.load("youtube", "v3", function() {
-        // yt api is ready
-    });
+  
+    // gapi.client.setApiKey("AIzaSyDc6CAlmMDlI4EH2YHeGnVVTW-RvU564QM");
+    // gapi.client.load("youtube", "v3", function() {
+    //     // yt api is ready
+    // });
 };
   $( "#categories" )
     .mouseenter(function() {
