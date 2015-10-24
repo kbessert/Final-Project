@@ -68,7 +68,15 @@ function addToPlaylistIfExists(){
       if(customMusicObject.hasOwnProperty(prop)) {
         if(customMusicObject[prop] === document.getElementById("value").value) {
            console.log("playlist ran");
-            currentId= ","+ currentId;
+           console.log(currentId);
+           console.log(currentId.length);
+           console.log(customMusicObject.playListId.slice(-1));
+           console.log(customMusicObject.playListId.match(/[^,]+/g));
+           
+           if(customMusicObject.playListId.slice(-1)!=","&&customMusicObject.playListId!=null)
+           {
+            customMusicObject.playListId+= ",";
+          }
             customMusicObject.playListId+=currentId;
             console.log(customMusicObject);
             runCategoryApi(customMusicObject);
@@ -325,6 +333,7 @@ function runCategoryApi(currentPlaylistId){
       } else {
         if (uploadStatus === 'processed') {
           customMusicObject.playListId+=videoId;
+          console.log(customMusicObject.playListId);
            $("#results").html("");
               $.get("partials/videotemplate.html", function(data) {
                 $('div.item').remove();
