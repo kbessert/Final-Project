@@ -6,7 +6,7 @@ $(function() {
     var $events = $("#events");
     var randomNumber=Math.floor(Math.random()*10);
     var musicIdArray=[
-     bluesMusicId={playListName:"Blues",playListId:"PLtBIO70rIs,9AB-B5aIxaQ,t5HEzK1XYvI,NJZlAFYN5qI,pvYuQNy4oVc,PYCfN6mJ-c8"},
+     bluesMusicId={playListName:"Blues",playListId:"9AB-B5aIxaQ,t5HEzK1XYvI,NJZlAFYN5qI,pvYuQNy4oVc,PYCfN6mJ-c8"},
      countryMusicId={playListName:"Country",playListId:"NHJKU_iVrtM,RS9gV_E9gzg,64DhqqnGd1U,3m7c1vRBCt4,dP3EX84x6iY,ZHhZO21SGI4"},
      punkMusicId={playListName:"Punk/Alt",playListId:"ZfvirxZMCr8,6zsIl_2U3KM,gfVpzQjE3Jg,NRQzySw22Pw,EAskUOgclf8,zNHTqikczLg"},
      gospelMusicId={playListName:"Gospel",playListId:"2Egepsyuzss,fbkJqzNU1iA,nzuz_7aq_DU,Bcz1VXSQcLw,B2BLClDPq2M,HXkMS3zRE0M"},
@@ -67,18 +67,9 @@ function addToPlaylistIfExists(){
      for(var prop in customMusicObject) {
       if(customMusicObject.hasOwnProperty(prop)) {
         if(customMusicObject[prop] === document.getElementById("value").value) {
-           console.log("playlist ran");
-           console.log(currentId);
-           console.log(currentId.length);
-           console.log(customMusicObject.playListId.slice(-1));
-           console.log(customMusicObject.playListId.match(/[^,]+/g));
            
-           if(customMusicObject.playListId.slice(-1)!=","&&customMusicObject.playListId!=null)
-           {
-            customMusicObject.playListId+= ",";
-          }
-            customMusicObject.playListId+=currentId;
-            console.log(customMusicObject);
+            customMusicObject.playListId+=","+currentId;
+            console.log(customMusicObject+"weeee");
             runCategoryApi(customMusicObject);
             return; 
           }
@@ -100,6 +91,7 @@ function addToPlaylistIfExists(){
       });
     runCategoryApi(customMusicObject);
 }
+
 var oForm = document.getElementById('searchForm');
     $(oForm).on("submit", function(e) {
       e.preventDefault();
@@ -190,7 +182,7 @@ function runCategoryApi(currentPlaylistId){
   var INITIAL_STATUS_POLLING_INTERVAL_MS = 15 * 1000;
 
   var accessToken;
-
+$('.post-upload').hide();
   window.oauth2Callback = function(authResult) {
     if (authResult['access_token']) {
       accessToken = authResult['access_token'];
@@ -332,7 +324,7 @@ function runCategoryApi(currentPlaylistId){
         }, waitForNextPoll);
       } else {
         if (uploadStatus === 'processed') {
-          customMusicObject.playListId+=videoId;
+          customMusicObject.playListId+=","+videoId;
           console.log(customMusicObject.playListId);
            $("#results").html("");
               $.get("partials/videotemplate.html", function(data) {
@@ -340,6 +332,18 @@ function runCategoryApi(currentPlaylistId){
                 currentId=(customMusicObject.playListId);
                   $("#results").append(tplawesome(data, [{"title":customMusicObject.playListName, "videoid":customMusicObject.playListId}]));
                     $('div[data-youtube-id]').ntzYoutubeEmbed();
+                     $('#post-upload-status').empty();
+                     $('#percent-transferred').text(null);
+                     $('#bytes-transferred').text(null);
+                     $('#total-bytes').text(null);
+                     $('#upload-progress').attr({
+                  value: 0,
+                  max: 0
+                });
+                    $('#video-id').text("");
+                    $('.post-upload').hide();
+                    $('#submit').attr('disabled', false);
+
                   });
          console.log(customMusicObject);
         }
@@ -353,6 +357,7 @@ function runCategoryApi(currentPlaylistId){
     $.getScript(GOOGLE_PLUS_SCRIPT_URL);
 
     $('#upload-form').submit(initiateUpload);
+
   });
 
 
