@@ -1,7 +1,8 @@
 function tplawesome(e,t){res=e;for(var n=0;n<t.length;n++){res=res.replace(/\{\{(.*?)\}\}/g,function(e,r){return t[n][r]})}return res}
 var currentId;
-var customMusicObject={playListName:"Uploads",playListId:""};
-
+var customMusicArray=[
+ customMusicObjectUploads={playListName:"Uploads",playListId:""}
+  ];
 $(function() {
     var $events = $("#events");
     var randomNumber=Math.floor(Math.random()*10);
@@ -61,35 +62,54 @@ $(function() {
         });
       });
       console.log(musicIdArray[randomNumber]);
-   runCategoryApi(jazzMusicId); 
+   runCategoryApi(musicIdArray[randomNumber]); 
 });
+ 
 function addToPlaylistIfExists(){
-     for(var prop in customMusicObject) {
-      if(customMusicObject.hasOwnProperty(prop)) {
-        if(customMusicObject[prop] === document.getElementById("value").value) {
-           
-            customMusicObject.playListId+=","+currentId;
-            console.log(customMusicObject+"weeee");
-            runCategoryApi(customMusicObject);
-            return; 
-          }
-        }
-      }
+  console.log(customMusicArray);
+  var valueHolder =  document.getElementById("value").value;
+    var keyHolder = valueHolder.replace(/['"]+/g, '');
+    var found = false;
+        $.grep(customMusicArray, function(e){
+          if(e.playListName === valueHolder){         
+            e.playListId+=","+currentId;
+            console.log(e);
+            runCategoryApi(e);
+            found = true;
+            return;
+       }
+          });   
+        
+      if (!found){
       createNewPlaylist();
+    }
+
   }
     function createNewPlaylist(){
+      var newPlaylistObject = new Object;
+      var valueHolder =  document.getElementById("value").value;
+      var keyHolder = valueHolder.replace(/['"]+/g, '');
       console.log("playlist ran");
       console.log(document.getElementById("value").value);
+      
       //customMusicObject.customPlayListId.push(eval(document.getElementById("value").value)=[]);
-      customMusicObject.playListName = document.getElementById("value").value;
-      console.log(document.getElementById('value').value);
-      customMusicObject.playListId = currentId;
-      console.log(customMusicObject);
+      customMusicArray.push(newPlaylistObject);
+     // var playListName = "customMusicObject" + valueHolder;
+      
+       var playListId = "playListId";
+       newPlaylistObject.playListName = valueHolder;
+       newPlaylistObject.playListId= currentId;
+       
+       $.grep(customMusicArray, function(e){
+        if(e.playListName === valueHolder){
        $("#results").html("");
       $.get("partials/playlisttemplate.html", function(data) {
-        $("#options").append(tplawesome(data, [{"option":customMusicObject.playListName}]));
+        $("#options").append(tplawesome(data, [{"option":e.playListName}]));
+
       });
-    runCategoryApi(customMusicObject);
+    runCategoryApi(e);
+  }
+  });
 }
 
 var oForm = document.getElementById('searchForm');
@@ -140,7 +160,7 @@ $('#wrapper').tubular({videoId: 'cpYOYQ4k_GU'});
 function initializeGapi() {
 
       $.get("partials/playlisttemplate.html", function(data) {
-        $("#options").append(tplawesome(data, [{"option":customMusicObject.playListName}]));
+        $("#options").append(tplawesome(data, [{"option":customMusicObjectUploads.playListName}]));
       });
 
   
@@ -324,13 +344,14 @@ $('.post-upload').hide();
         }, waitForNextPoll);
       } else {
         if (uploadStatus === 'processed') {
-          customMusicObject.playListId+=","+videoId;
-          console.log(customMusicObject.playListId);
+
+          customMusicObjectUploads.playListId+=","+videoId;
+          console.log(customMusicObjectUploads);
            $("#results").html("");
               $.get("partials/videotemplate.html", function(data) {
                 $('div.item').remove();
-                currentId=(customMusicObject.playListId);
-                  $("#results").append(tplawesome(data, [{"title":customMusicObject.playListName, "videoid":customMusicObject.playListId}]));
+                currentId=(customMusicObjectUploads.playListId);
+                  $("#results").append(tplawesome(data, [{"title":customMusicObjectUploads.playListName, "videoid":customMusicObjectUploads.playListId}]));
                     $('div[data-youtube-id]').ntzYoutubeEmbed();
                      $('#post-upload-status').empty();
                      $('#percent-transferred').text(null);
@@ -345,7 +366,7 @@ $('.post-upload').hide();
                     $('#submit').attr('disabled', false);
 
                   });
-         console.log(customMusicObject);
+         console.log(customMusicObjectUploads);
         }
 
         $('#post-upload-status').append('<li>Final status.</li>');
