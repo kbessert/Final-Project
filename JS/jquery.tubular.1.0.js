@@ -73,7 +73,7 @@
             resize();
             if (options.mute) e.target.mute();
             e.target.seekTo(options.start);
-            e.target.playVideo();
+            //e.target.playVideo();
         }
 
         window.onPlayerStateChange = function(state) {

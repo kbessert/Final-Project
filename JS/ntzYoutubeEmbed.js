@@ -81,10 +81,10 @@
           $this.el.trigger('player-play');
         });
       }
-
+      //if (window.matchMedia("(min-width: 769px)").matches) {
       this.player = new YT.Player( this.movieContainerID, {
-        height    : '155%',
-        width     : '155%',
+        height    : '100%',
+        width     : '100%',
         //videoId   : this.el.data('youtube-id'),
         //playlist : this.el.data('youtube-id'),
         playerVars: playerVars,
@@ -118,3 +118,4 @@
     });
   };
 })( jQuery, document );
+

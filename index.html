@@ -14,7 +14,6 @@
 </head>
 <body ng-app="detroitMusicApp" id="container">
     <nav class="navbar navbar-inverse">
-      <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -105,116 +104,99 @@
 
   
 
-    <div class="container-fluid">
+    <div class="container">
       <div class="metro">
       <h3> Metro Music Detroit </h3> </div>
       <h5 id="tag">listen.upload.attend.</h5>
-    <div id="wrapper">       
+      
+          
+    <div id="wrapper" class=" col-md-12">      
     </div>
-    <div class="border">
-    <img id="landingFooter" src="images/landingFader.png">
     </div>
-    </div>
-
-     
          <div class="container-fluid">
     <h2 class="catHeader" id="catHeader">Playlists</h2></div>
-    <div id="categories">
-        <div class="rap">
-          <button onclick="runCategoryApi(rapMusicId)"><li class="nav"><a href="#music"><img src="images/rap2.jpg"></a>
-          <h3> rap/hip-hop</h3></button>
+    
+          <div class=" col-md-1 col-xs-4 col-md-offset-1">
+          <button onclick="runCategoryApi(rapMusicId)"><li class="nav"><a href="#music"><img src="images/rap2.jpg"><h3 class="rap"> rap/hip-hop</h3></a></button>
         </div>
-        <div class="rock">
-          <button onclick="runCategoryApi(rockMusicId)"><li class="nav"><a href="#music"><img src="images/rock2.jpg"></a>
-          <h3>rock</h3></button>
+        <div class="col-md-1 col-xs-4">
+          <button onclick="runCategoryApi(rockMusicId)"><li class="nav"><a href="#music"><img src="images/rock2.jpg">
+          <h3 class="rock">rock</h3></a></button>
         </div>
-        <div class="alt">
-          <button onclick="runCategoryApi(punkMusicId)"><li class="nav"><a href="#music"><img src="images/alternative2.jpg"></a>
-          <h3>alternative</h3></button>
+
+        <div class="col-md-1 col-xs-4">
+          <button onclick="runCategoryApi(punkMusicId)"><li class="nav"><a href="#music"><img src="images/alternative2.jpg">
+          <h3 class="alt">alternative</h3></a></button>
         </div>
-        <div class="country">
-          <button onclick="runCategoryApi(countryMusicId)"><li class="nav"><a href="#music"><img src="images/country2.jpg"></a>
-          <h3>country</h3></button>
+        <div class="col-md-1 col-xs-4">
+          <button onclick="runCategoryApi(countryMusicId)"><li class="nav"><a href="#music"><img src="images/country2.jpg">
+          <h3 class="country">country</h3></a></button>
         </div>
-        <div class="jazz">
-          <button onclick="runCategoryApi(jazzMusicId)"><li class="nav"><a href="#music"><img src="images/jazz2.jpg"></a>
-          <h3>jazz</h3></button>
+        <div class="col-md-1 col-xs-4">
+          <button onclick="runCategoryApi(jazzMusicId)"><li class="nav"><a href="#music"><img src="images/jazz2.jpg">
+          <h3 class="jazz">jazz</h3></a></button>
         </div>
-        <div class="blues">
-          <button onclick="runCategoryApi(bluesMusicId)"><li class="nav"><a href="#music"><img src="images/blues2.jpg"></a>
-          <h3>blues</h3></button>
+        <div class="col-md-1 col-xs-4">
+          <button onclick="runCategoryApi(bluesMusicId)"><li class="nav"><a href="#music"><img src="images/blues2.jpg">
+          <h3 class="blues">blues</h3></a></button>
         </div>
-        <div class="classical">
-          <button onclick="runCategoryApi(classicalMusicId)"><li class="nav"><a href="#music"><img src="images/classical2.jpg"></a>
-          <h3>classical</h3></button>
+        <div class="col-md-1 col-xs-4">
+          <button onclick="runCategoryApi(classicalMusicId)"><li class="nav"><a href="#music"><img src="images/classical2.jpg">
+          <h3 class = "classical">classical</h3></a></button>
         </div>
-        <div class="gospel">
-          <button onclick="runCategoryApi(gospelMusicId)"><li class="nav"><a href="#music"><img src="images/gospel2.jpg"></a>
-          <h3>gospel</h3></button>
+        <div class="col-md-1 col-xs-4">
+          <button onclick="runCategoryApi(gospelMusicId)"><li class="nav"><a href="#music"><img src="images/gospel2.jpg">
+          <h3 class="gospel">gospel</h3></a></button>
         </div>
-        <div class="elect">
-          <button onclick="runCategoryApi(elecDanMusicId)"><li class="nav"><a href="#music"><img src="images/electronic2.jpg"></a>
-          <h3>electronic</h3></button>
+        <div class="col-md-1 col-xs-4">
+          <button onclick="runCategoryApi(elecDanMusicId)"><li class="nav"><a href="#music"><img src="images/electronic2.jpg">
+          <h3 class="elect">electronic</h3></a></button>
         </div>
-        <div class="urban">
-          <button onclick="runCategoryApi(urbanMusicId)"><li class="nav"><a href="#music"><img src="images/urban2.jpg"></a>
-          <h3>urban</h3></button>
+        <div class="col-md-1 col-xs-4">
+          <button onclick="runCategoryApi(urbanMusicId)"><li class="nav"><a href="#music"><img src="images/urban2.jpg">
+          <h3 class="urban">urban</h3></a></button>
         </div>
-      </div>
+        <div class="col-xs-4">
+          </div>
+          <div class=" col-xs-4">
+            </div>
 
 
 
 
-      
-    <div id="sectionYoutube" class="col-md-6 col-md-offset-3">
+      <div id ="youtubeHolder" class="col-md-6 col-md-offset-1">
+    <div id="sectionYoutube">
+      <div>
        <div id="music"></div>
+     </div>
          <div id="results">
         <div class="video">
         </div>
         </div> 
       </div>
-     </div>
-     <div class="col-md-6 col-md-offset-3">
+     <div>
    
-                <h1 class="w100 text-center"><img id="youtube" src="images/youtube-logo.jpg">music search</h1>
+                <h1  class="col-md-8 col-md-offset-3"><img id="youtube" src="images/youtube-logo.jpg">music search</h1>
     </div>
             <div class="row" data-scope="https://www.googleapis.com/auth/youtube.readonly">
-                <div class="col-md-6 col-md-offset-3">
                     <form id="searchForm" action="#">
                         <p><input type="text" id="search" placeholder="Type something..." autocomplete="on" class="form-control" /></p>
                         <p><input  type="submit" value="Search" class="form-control btn btn-info w100"></p>
-                    </form>
-                    </div>
-  <!-- if we needed to change height/width we could use viewBox here -->
-     <!-- <div id="events"></div> !-->
- 
-
-
-
-
-
+                    </form> 
+                  </div>
+                  </div>
 <div ng-controller="eventCtrl">
 </div>
-   
     <div class="container-fluid">
     <div class="col-md-12"><div id="attend"></div>
     <h2 class="eventsHead">Attend </h2>
-
-
-      <!-- Instagram API-->
     <script src="//instansive.com/widget/js/instansive.js"></script><iframe src="//instansive.com/widgets/510d0df4f25e0827bcabaaf7193b15da0c640cf5.html" id="instansive_510d0df4f2" name="instansive_510d0df4f2"  scrolling="no" allowtransparency="true" class="instansive-widget" style="width: 85%; border: 0; overflow: hidden;"></iframe>
     <p id="hashtag">#detroitmusic</p>
-
-      <!-- Instagram API End-->
-
-
     <div id="events">
     </div>
     </div>
     </div>
-    </div>
-  </div>
-
+    
     <footer>
       <p>&copy; metro music | 2015</p>
     </footer>

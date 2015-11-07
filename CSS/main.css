@@ -13,11 +13,7 @@
 #metro {
   color: #00FFFF;
 }
-h1 {
-  color: white;
-  font-size: 50px;
-  display: block;
-}
+
 .navbar, form input {
   font-size: 17px;
 }
@@ -50,17 +46,17 @@ img {
   display: inline;
 }
 h1 #youtube { 
-  display: inline;
-  width: 200px;
-}
-.video {
-  width: 700px;
-  height: 360px;
-  margin-left: 150px;
+  display: inline-block;
+  width: 5em;
 }
 #sectionYoutube {
-  margin-bottom: 12%;
-  left: 1%;
+  display: inline-block;
+
+}
+#full-width-div {
+    position: absolute;
+    width: 100%;
+    left: 0;
 }
 .navbar{
   z-index: 2;
@@ -149,9 +145,7 @@ div.border {
     
     background-size:contain;
 }
-#landingFooter{
-  width: 100%;
-}
+
 .defaultEventImg{
   float: top;
   z-index: -1;
@@ -166,8 +160,7 @@ a:hover {
   text-decoration: none;
 }
 .playlist{
-  margin-top: 10px;
-  margin-right: 10px;
+ 
 }
 #playlistSubmit {
   color: gray;
@@ -251,40 +244,33 @@ h4 {
   color: #fff;
   background-color: #222222;
 }
-
-
-
-
-
-
-/**************
-CATEGORIES TEXT
-****************/
 .rap {
+  z-index: 1;
+  opacity: 0;
   position: relative;
-  display: inline;
+  color: white;
+  font-size: 15px;
+  top: -80px;
+  margin-right: 30px;
 }
 .rap img {
 display: inline;
 }
-.rap h3 {
-  z-index: 1;
+
+.rock {
+   z-index: 1;
   opacity: 0;
   position: relative;
   color: white;
   font-size: 15px;
   top: -80px;
   margin-right: 30px;
-
-}
-.rock {
-  position: relative;
-  display: inline;
 }
 .rock img {
 display: inline;
 }
-.rock h3 {
+
+.alt {
   z-index: 1;
   opacity: 0;
   position: relative;
@@ -292,15 +278,12 @@ display: inline;
   font-size: 15px;
   top: -80px;
   margin-right: 30px;
-}
-.alt {
-  position: relative;
-  display: inline;
 }
 .alt img {
 display: inline;
 }
-.alt h3 {
+
+.country {
   z-index: 1;
   opacity: 0;
   position: relative;
@@ -308,15 +291,12 @@ display: inline;
   font-size: 15px;
   top: -80px;
   margin-right: 30px;
-}
-.country {
-  position: relative;
-  display: inline;
 }
 .country img {
 display: inline;
 }
-.country h3 {
+
+.jazz {
   z-index: 1;
   opacity: 0;
   position: relative;
@@ -324,15 +304,12 @@ display: inline;
   font-size: 15px;
   top: -80px;
   margin-right: 30px;
-}
-.jazz {
-  position: relative;
-  display: inline;
 }
 .jazz img {
 display: inline;
 }
-.jazz h3 {
+
+.blues {
   z-index: 1;
   opacity: 0;
   position: relative;
@@ -340,15 +317,12 @@ display: inline;
   font-size: 15px;
   top: -80px;
   margin-right: 30px;
-}
-.blues {
-  position: relative;
-  display: inline;
 }
 .blues img {
 display: inline;
 }
-.blues h3 {
+
+.classical {
   z-index: 1;
   opacity: 0;
   position: relative;
@@ -356,15 +330,12 @@ display: inline;
   font-size: 15px;
   top: -80px;
   margin-right: 30px;
-}
-.classical {
-  position: relative;
-  display: inline;
 }
 .classical img {
 display: inline;
 }
-.classical h3 {
+
+.gospel {
   z-index: 1;
   opacity: 0;
   position: relative;
@@ -372,15 +343,12 @@ display: inline;
   font-size: 15px;
   top: -80px;
   margin-right: 30px;
-}
-.gospel {
-  position: relative;
-  display: inline;
 }
 .gospel img {
 display: inline;
 }
-.gospel h3 {
+
+.elect {
   z-index: 1;
   opacity: 0;
   position: relative;
@@ -388,15 +356,12 @@ display: inline;
   font-size: 15px;
   top: -80px;
   margin-right: 30px;
-}
-.elect {
-  position: relative;
-  display: inline;
 }
 .elect img {
 display: inline;
 }
-.elect h3 {
+
+.urban {
   z-index: 1;
   opacity: 0;
   position: relative;
@@ -404,26 +369,12 @@ display: inline;
   font-size: 15px;
   top: -80px;
   margin-right: 30px;
-}
-.urban {
-  position: relative;
-  display: inline;
 }
 .urban img {
 display: inline;
 }
-.urban h3 {
-  z-index: 1;
-  opacity: 0;
-  position: relative;
-  color: white;
-  font-size: 15px;
-  top: -80px;
-  margin-right: 30px;
-}
-html{
-  zoom: 67%;
-}
+
+
 
 
 
