@@ -143,13 +143,13 @@ $(oForm).on("submit", function(e) {
 $('button').on('click', function(e){
   e.preventDefault();
    console.log(this.className);
-   if(this.className==="stop"){
-    console.log("stopped");
-     runCategoryApi(currentId);
+   // if(this.className==="stop"){
+   //  console.log("stopped");
+   //   runCategoryApi(currentId);
 
-   }else{
+   // }else{
   $('div[data-youtube-id]').trigger('player-' + this.className );
-}
+//}
 });
 function resetVideoHeight() {
   $(".video").css("height", $("#results").width() * 9/16);
