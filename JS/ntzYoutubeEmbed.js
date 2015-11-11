@@ -34,7 +34,7 @@
       $this.createPlayer();
       
       this.el.on('player-pause', function(){ $this.player.pauseVideo(); });
-      this.el.on('player-stop', function(){ $this.player.pauseVideo();$this.player.seekTo(0);$this.player.stopVideo();  });
+      this.el.on('player-stop', function(){$this.player.seekTo(0);$this.player.stopVideo();$this.player.clearVideo();});
       this.el.on('player-play', function(){ $this.player.playVideo(); });
 
       this.el.on('player-toggle-state', function(){

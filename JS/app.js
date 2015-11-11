@@ -1,5 +1,7 @@
 function tplawesome(e,t){res=e;for(var n=0;n<t.length;n++){res=res.replace(/\{\{(.*?)\}\}/g,function(e,r){return t[n][r]})}return res}
 var currentId;
+var currentIdObject={};
+var currentName;
 var customMusicArray=[
  customMusicObjectUploads={playListName:"Uploads",playListId:""}
   ];
@@ -131,6 +133,7 @@ $(oForm).on("submit", function(e) {
       $("#results").html("");
       $.each(results.items, function(index, item) {
         $.get("partials/videotemplate.html", function(data) {
+          currentName=item.snippet.title;
           currentId=item.id.videoId;
           $("#results").append(tplawesome(data, [{"title":item.snippet.title, "videoid":item.id.videoId}]));
           $('div[data-youtube-id]').ntzYoutubeEmbed();
@@ -143,13 +146,15 @@ $(oForm).on("submit", function(e) {
 $('button').on('click', function(e){
   e.preventDefault();
    console.log(this.className);
-   // if(this.className==="stop"){
-   //  console.log("stopped");
-   //   runCategoryApi(currentId);
+    if(this.className==="stop"){
+      currentIdObject.playListName=currentName;
+      currentIdObject.playListId=currentId;
+    console.log(currentId);
+      runCategoryApi(currentIdObject);
 
-   // }else{
+    }else{
   $('div[data-youtube-id]').trigger('player-' + this.className );
-//}
+}
 });
 function resetVideoHeight() {
   $(".video").css("height", $("#results").width() * 9/16);
@@ -186,11 +191,12 @@ function runCategoryApi(currentPlaylistId){
   $.get("partials/videotemplate.html", function(data) {
     $('div.item').remove();
     console.log(currentPlaylistId.playListName,currentPlaylistId.playListId);
+    currentName=(currentPlaylistId.playListName);
     currentId=(currentPlaylistId.playListId);
     $("#results").append(tplawesome(data, [{"title":currentPlaylistId.playListName, "videoid":currentPlaylistId.playListId}]));
     $('div[data-youtube-id]').ntzYoutubeEmbed();
   });
- resize();  
+ 
 }
 window.addEventListener('resize', function(event){
 resize();
