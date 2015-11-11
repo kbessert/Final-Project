@@ -34,7 +34,7 @@
       $this.createPlayer();
       
       this.el.on('player-pause', function(){ $this.player.pauseVideo(); });
-      this.el.on('player-stop', function(){ $this.player.seekTo(0); $this.player.stopVideo(); });
+      this.el.on('player-stop', function(){ $this.player.pauseVideo();$this.player.seekTo(0);$this.player.stopVideo();  });
       this.el.on('player-play', function(){ $this.player.playVideo(); });
 
       this.el.on('player-toggle-state', function(){
@@ -101,7 +101,7 @@
 
     ,movieReady: function( player ){
       this.el.data('youtubePlayer', player.target ).trigger( 'player-ready', player );
-
+resize();
     }//movieReady
 
 
@@ -110,12 +110,25 @@
     }//stateChange
   };
 
-
+function resize(){
+   if( $(window).width() < 1000){
+  console.log("function resize ran ntz");
+    var screenWidth=$(window).width();
+    var item = document.getElementById("my-embed");
+    item.style.width = screenWidth - 25;
+}else if ( $(window).width() > 1000){
+  console.log("function resize reset ntz");
+   var item = document.getElementById("my-embed");
+    item.style.width = 914;
+  }
+}
   $.fn.ntzYoutubeEmbed = function() {
     return this.each(function(){
       var obj = Object.create( ntzYoutubeEmbed );
       obj.init( this );
     });
+
   };
+
 })( jQuery, document );
 
