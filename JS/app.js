@@ -196,21 +196,27 @@ function runCategoryApi(currentPlaylistId){
     $("#results").append(tplawesome(data, [{"title":currentPlaylistId.playListName, "videoid":currentPlaylistId.playListId}]));
     $('div[data-youtube-id]').ntzYoutubeEmbed();
   });
- 
+ resize();
 }
 window.addEventListener('resize', function(event){
 resize();
 });
+
 function resize(){
+    var margin= document.getElementById("margin");
+   var item = document.getElementById("my-embed");
+   var search = document.getElementById("search");
    if( $(window).width() < 1000){
   console.log("function ran");
-    var screenWidth=$(window).width();
-    var item = document.getElementById("my-embed");
+    var screenWidth=$(window).width();   
     item.style.width = screenWidth -25;
+    search.style.width =screenWidth -25;
+    search.style.marginLeft=margin.style.marginLeft;
 }else if ( $(window).width() > 1000){
   console.log("function rerun");
-   var item = document.getElementById("my-embed");
     item.style.width = 914;
+    search.style.width =item.style.width;
+    search.style.marginLeft=margin.style.marginLeft;
   }
 }
 var GOOGLE_PLUS_SCRIPT_URL = 'https://apis.google.com/js/client:plusone.js';
@@ -369,3 +375,4 @@ function checkVideoStatus(videoId, waitForNextPoll) {
     }
   });
 } 
+resize();
