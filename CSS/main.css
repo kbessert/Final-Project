@@ -193,9 +193,9 @@ a:hover {
   color: white;
   border: 1px solid white;
 }
-#searchForm {
+/*#searchForm {
   margin-bottom: 200px;
-}
+}*/
 #upload {
   color: gray;
   font-size: 20px;

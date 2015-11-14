@@ -118,6 +118,7 @@ function createNewPlaylist(){
 }
 var oForm = document.getElementById('searchForm');
 $(oForm).on("submit", function(e) {
+  console.log(e);
   e.preventDefault();
   gapi.client.load('youtube', 'v3', function() {
     console.log('youtube API loaded...');  
@@ -125,11 +126,13 @@ $(oForm).on("submit", function(e) {
       part: "snippet",
       type: "video",
       videoCategoryId:10,
-      q: encodeURIComponent($("#search").val()).replace(/%20/g, "+"),
+      q: encodeURIComponent($("#searchInput").val()).replace(/%20/g, "+"),
       maxResults: 1 
     });  
+    console.log(request);
     request.execute(function(response) {
       var results = response.result;
+      console.log(response);
       $("#results").html("");
       $.each(results.items, function(index, item) {
         $.get("partials/videotemplate.html", function(data) {
